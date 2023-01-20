@@ -17,12 +17,12 @@ SHOW WARNINGS;
 USE `workouts` ;
 
 -- -----------------------------------------------------
--- Table `workouts`
+-- Table `workout`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `workouts` ;
+DROP TABLE IF EXISTS `workout` ;
 
 SHOW WARNINGS;
-CREATE TABLE IF NOT EXISTS `workouts` (
+CREATE TABLE IF NOT EXISTS `workout` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `date` DATETIME NOT NULL,
   PRIMARY KEY (`id`))
@@ -31,12 +31,12 @@ ENGINE = InnoDB;
 SHOW WARNINGS;
 
 -- -----------------------------------------------------
--- Table `exercises`
+-- Table `exercise`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `exercises` ;
+DROP TABLE IF EXISTS `exercise` ;
 
 SHOW WARNINGS;
-CREATE TABLE IF NOT EXISTS `exercises` (
+CREATE TABLE IF NOT EXISTS `exercise` (
   `id` INT NOT NULL,
   `name` VARCHAR(100) NULL,
   `description` TEXT NULL,
@@ -57,12 +57,12 @@ CREATE TABLE IF NOT EXISTS `workouts_have_exercises` (
   PRIMARY KEY (`exercises_id`, `workouts_id`),
   CONSTRAINT `fk_exercises_has_workouts_exercises`
     FOREIGN KEY (`exercises_id`)
-    REFERENCES `exercises` (`id`)
+    REFERENCES `exercise` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_exercises_has_workouts_workouts1`
     FOREIGN KEY (`workouts_id`)
-    REFERENCES `workouts` (`id`)
+    REFERENCES `workout` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -84,21 +84,21 @@ GRANT SELECT, INSERT, TRIGGER, UPDATE, DELETE ON TABLE * TO 'workout';
 SHOW WARNINGS;
 
 -- -----------------------------------------------------
--- Data for table `workouts`
+-- Data for table `workout`
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `workouts`;
-INSERT INTO `workouts` (`id`, `date`) VALUES (1, '1000-01-01');
+INSERT INTO `workout` (`id`, `date`) VALUES (1, '1000-01-01');
 
 COMMIT;
 
 
 -- -----------------------------------------------------
--- Data for table `exercises`
+-- Data for table `exercise`
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `workouts`;
-INSERT INTO `exercises` (`id`, `name`, `description`) VALUES (1, 'bench press', 'weighted barbell in prone ');
+INSERT INTO `exercise` (`id`, `name`, `description`) VALUES (1, 'bench press', 'weighted barbell in prone ');
 
 COMMIT;
 

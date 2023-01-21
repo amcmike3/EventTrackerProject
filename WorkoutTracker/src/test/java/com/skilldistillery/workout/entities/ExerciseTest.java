@@ -3,6 +3,7 @@ package com.skilldistillery.workout.entities;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -43,8 +44,14 @@ class ExerciseTest {
 	}
 
 	@Test
-	void test() {
+	void test_basic_mappings() {
 		assertNotNull(exercise);
 		assertEquals("bench press", exercise.getName());
+	}
+	@Test
+	void test_MTM_mappings_to_workout() {
+		assertNotNull(exercise);
+		assertNotNull(exercise.getWorkouts());
+		assertTrue(exercise.getWorkouts().size() >= 1);
 	}
 }

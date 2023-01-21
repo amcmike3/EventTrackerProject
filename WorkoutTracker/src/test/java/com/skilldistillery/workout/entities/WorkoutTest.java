@@ -2,6 +2,7 @@ package com.skilldistillery.workout.entities;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -47,6 +48,11 @@ class WorkoutTest {
 		assertEquals(1, workout.getDate().getDayOfMonth());
 	}
 	
-	
+	@Test
+	void test_MTM_mappings_to_exercise() {
+		assertNotNull(workout);
+		assertNotNull(workout.getExercises());
+		assertTrue(workout.getExercises().size() >= 1);
+	}
 	
 }

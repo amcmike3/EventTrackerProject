@@ -113,6 +113,24 @@ INSERT INTO `exercise` (`id`, `name`, `description`, `weight`, `reps`, `sets`) V
 COMMIT;
 
 
+-- -----------------------------------------------------
+-- Data for table `workout_has_exercise`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `workoutdb`;
+INSERT INTO `workout_has_exercise` (`workout_id`, `exercise_id`) VALUES (1, 3);
+INSERT INTO `workout_has_exercise` (`workout_id`, `exercise_id`) VALUES (1, 2);
+INSERT INTO `workout_has_exercise` (`workout_id`, `exercise_id`) VALUES (1, 1);
+INSERT INTO `workout_has_exercise` (`workout_id`, `exercise_id`) VALUES (2, 3);
+INSERT INTO `workout_has_exercise` (`workout_id`, `exercise_id`) VALUES (2, 2);
+INSERT INTO `workout_has_exercise` (`workout_id`, `exercise_id`) VALUES (2, 1);
+INSERT INTO `workout_has_exercise` (`workout_id`, `exercise_id`) VALUES (3, 1);
+INSERT INTO `workout_has_exercise` (`workout_id`, `exercise_id`) VALUES (3, 2);
+INSERT INTO `workout_has_exercise` (`workout_id`, `exercise_id`) VALUES (3, 3);
+
+COMMIT;
+
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

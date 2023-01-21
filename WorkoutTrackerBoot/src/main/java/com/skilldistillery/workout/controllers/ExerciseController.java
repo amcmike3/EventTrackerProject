@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,8 +30,12 @@ public class ExerciseController {
 	}
 	
 	@GetMapping("exercises/{id}")
-	public Exercise getExercise(@PathVariable Integer id) {
-		return exServ.getExercise(id);
+	public Exercise getExercise(@PathVariable Integer id, HttpServletResponse resp) {
+		Exercise ans = exServ.getExercise(id);
+		if (ans == null) {
+			resp.setStatus(404);
+		}
+		return ans;
 	}
 	
 	@PostMapping("exercises")
@@ -40,6 +45,21 @@ public class ExerciseController {
 			ans = exServ.createExercise(exercise);
 			resp.setStatus(201);
 		} else {
+			resp.setStatus(400);
+		}
+		return ans;
+	}
+	
+	@PutMapping("exercises/{id}")
+	public Exercise updateExercises(@PathVariable Integer id, @RequestBody Exercise exercise, HttpServletResponse resp) {
+		Exercise ans = null;
+		try {
+			ans = exServ.updateExercise(id, exercise);
+			if (ans == null) {
+				resp.setStatus(404);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 			resp.setStatus(400);
 		}
 		return ans;

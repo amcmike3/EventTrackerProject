@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,18 +29,44 @@ public class WorkoutController {
 	}
 
 	@GetMapping("workouts/{id}")
-	public Workout getWorkout(@PathVariable Integer id) {
-		return workServ.getWorkout(id);
+	public Workout getWorkout(@PathVariable Integer id, HttpServletResponse resp) {
+		Workout ans = workServ.getWorkout(id);
+		if (ans == null) {
+			resp.setStatus(404);
+		}
+		
+		return ans;
 	}
 
 	@PostMapping("workouts")
 	public Workout createWorkout(@RequestBody Workout workout, HttpServletResponse resp) {
 		Workout ans = null;
-		if (workout.getExercises() != null) {
+		// hibernate gets cannot update child error if Exercise objects are also sent in.
+		try {
+			if (workout.getExercises() != null) {
+				resp.setStatus(400);
+			} else {
+				ans = workServ.createWorkout(workout);
+				resp.setStatus(201);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 			resp.setStatus(400);
-		} else {
-			ans = workServ.createWorkout(workout);
-			resp.setStatus(201);
+		}
+		return ans;
+	}
+	
+	@PutMapping("workouts/{id}")
+	public Workout updateWorkout(@PathVariable Integer id, @RequestBody Workout workout, HttpServletResponse resp) {
+		Workout ans = null;
+		try {
+			ans = workServ.updateWorkout(id, workout);
+			if (ans == null) {
+				resp.setStatus(404);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		resp.setStatus(400);
 		}
 		return ans;
 	}

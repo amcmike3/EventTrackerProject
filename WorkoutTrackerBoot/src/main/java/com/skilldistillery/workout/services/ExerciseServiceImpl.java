@@ -54,7 +54,7 @@ public class ExerciseServiceImpl implements ExerciseService {
 			if(exercise.getName() != null && !exercise.getName().equals("")) {
 				ans.setName(exercise.getName());
 			}
-			exRepo.saveAndFlush(ans);
+			ans = exRepo.saveAndFlush(ans);
 		}
 		return ans;
 	}

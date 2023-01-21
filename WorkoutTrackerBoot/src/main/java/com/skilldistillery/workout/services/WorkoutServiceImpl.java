@@ -49,7 +49,7 @@ public class WorkoutServiceImpl implements WorkoutService {
 			if(workout.getNotes() != null && workout.getNotes() != "") {
 				ans.setNotes(workout.getNotes());
 			}
-			workoutRepo.saveAndFlush(ans);
+			ans = workoutRepo.saveAndFlush(ans);
 		}
 		return ans;
 	}

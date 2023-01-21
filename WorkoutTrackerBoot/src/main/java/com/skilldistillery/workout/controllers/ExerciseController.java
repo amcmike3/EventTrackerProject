@@ -66,10 +66,8 @@ public class ExerciseController {
 		return ans;
 	}
 	
-	@DeleteMapping("exercises/{id}")
-	public void deleteExercise(HttpServletResponse resp) {
-		//tell user its not allowed
-			resp.setStatus(405);
-	}
+//	@DeleteMapping("exercises/{id}")
+//	delete exercise is not allowed.
+	
 
 }

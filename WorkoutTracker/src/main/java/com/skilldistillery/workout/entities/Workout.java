@@ -27,7 +27,7 @@ public class Workout {
 	private String notes;
 	
 	@ManyToMany
-	@JoinTable(name = "workouts_have_exercises", 
+	@JoinTable(name = "workout_has_exercise", 
 	joinColumns = @JoinColumn(name = "exercise_id"), 
 	inverseJoinColumns = @JoinColumn(name = "workout_id"))
 	private List<Exercise> exercises;

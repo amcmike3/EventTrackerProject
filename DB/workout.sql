@@ -43,38 +43,40 @@ CREATE TABLE IF NOT EXISTS `exercise` (
   `name` VARCHAR(200) NOT NULL,
   `description` TEXT NULL,
   `weight` INT NULL,
+  `reps` INT NULL,
+  `sets` INT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
 SHOW WARNINGS;
 
 -- -----------------------------------------------------
--- Table `workouts_have_exercises`
+-- Table `workout_has_exercise`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `workouts_have_exercises` ;
+DROP TABLE IF EXISTS `workout_has_exercise` ;
 
 SHOW WARNINGS;
-CREATE TABLE IF NOT EXISTS `workouts_have_exercises` (
-  `exercises_id` INT NOT NULL,
-  `workouts_id` INT NOT NULL,
-  PRIMARY KEY (`exercises_id`, `workouts_id`),
-  CONSTRAINT `fk_exercises_has_workouts_exercises`
-    FOREIGN KEY (`exercises_id`)
-    REFERENCES `exercise` (`id`)
+CREATE TABLE IF NOT EXISTS `workout_has_exercise` (
+  `workout_id` INT NOT NULL,
+  `exercise_id` INT NOT NULL,
+  PRIMARY KEY (`workout_id`, `exercise_id`),
+  CONSTRAINT `fk_workout_has_exercise_workout`
+    FOREIGN KEY (`workout_id`)
+    REFERENCES `workout` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_exercises_has_workouts_workouts1`
-    FOREIGN KEY (`workouts_id`)
-    REFERENCES `workout` (`id`)
+  CONSTRAINT `fk_workout_has_exercise_exercise1`
+    FOREIGN KEY (`exercise_id`)
+    REFERENCES `exercise` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 SHOW WARNINGS;
-CREATE INDEX `fk_exercises_has_workouts_workouts1_idx` ON `workouts_have_exercises` (`workouts_id` ASC);
+CREATE INDEX `fk_workout_has_exercise_exercise1_idx` ON `workout_has_exercise` (`exercise_id` ASC);
 
 SHOW WARNINGS;
-CREATE INDEX `fk_exercises_has_workouts_exercises_idx` ON `workouts_have_exercises` (`exercises_id` ASC);
+CREATE INDEX `fk_workout_has_exercise_workout_idx` ON `workout_has_exercise` (`workout_id` ASC);
 
 SHOW WARNINGS;
 SET SQL_MODE = '';
@@ -103,27 +105,26 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `workoutdb`;
-INSERT INTO `exercise` (`id`, `name`, `description`, `weight`) VALUES (1, 'bench press', 'weighted barbell inverse prone ', 165);
-INSERT INTO `exercise` (`id`, `name`, `description`, `weight`) VALUES (2, 'leg press', 'prone machine', 45);
-INSERT INTO `exercise` (`id`, `name`, `description`, `weight`) VALUES (3, 'weighted pull-up', 'pull up with weight', 25);
+INSERT INTO `exercise` (`id`, `name`, `description`, `weight`, `reps`, `sets`) VALUES (1, 'bench press', 'weighted barbell inverse prone ', 165, 8, 3);
+INSERT INTO `exercise` (`id`, `name`, `description`, `weight`, `reps`, `sets`) VALUES (2, 'leg press', 'prone machine', 45, 8, 2);
+INSERT INTO `exercise` (`id`, `name`, `description`, `weight`, `reps`, `sets`) VALUES (3, 'weighted pull-up', 'pull up with weight', 25, 8, 4);
 
 COMMIT;
 
 
 -- -----------------------------------------------------
--- Data for table `workouts_have_exercises`
+-- Data for table `workout_has_exercise`
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `workoutdb`;
-INSERT INTO `workouts_have_exercises` (`exercises_id`, `workouts_id`) VALUES (1, 1);
-INSERT INTO `workouts_have_exercises` (`exercises_id`, `workouts_id`) VALUES (1, 2);
-INSERT INTO `workouts_have_exercises` (`exercises_id`, `workouts_id`) VALUES (1, 3);
-INSERT INTO `workouts_have_exercises` (`exercises_id`, `workouts_id`) VALUES (2, 3);
-INSERT INTO `workouts_have_exercises` (`exercises_id`, `workouts_id`) VALUES (2, 2);
-INSERT INTO `workouts_have_exercises` (`exercises_id`, `workouts_id`) VALUES (2, 1);
-INSERT INTO `workouts_have_exercises` (`exercises_id`, `workouts_id`) VALUES (3, 1);
-INSERT INTO `workouts_have_exercises` (`exercises_id`, `workouts_id`) VALUES (3, 2);
-INSERT INTO `workouts_have_exercises` (`exercises_id`, `workouts_id`) VALUES (3, 3);
+INSERT INTO `workout_has_exercise` (`workout_id`, `exercise_id`) VALUES (1, 2);
+INSERT INTO `workout_has_exercise` (`workout_id`, `exercise_id`) VALUES (1, 3);
+INSERT INTO `workout_has_exercise` (`workout_id`, `exercise_id`) VALUES (1, 1);
+INSERT INTO `workout_has_exercise` (`workout_id`, `exercise_id`) VALUES (2, 1);
+INSERT INTO `workout_has_exercise` (`workout_id`, `exercise_id`) VALUES (2, 2);
+INSERT INTO `workout_has_exercise` (`workout_id`, `exercise_id`) VALUES (2, 3);
+INSERT INTO `workout_has_exercise` (`workout_id`, `exercise_id`) VALUES (3, 2);
+INSERT INTO `workout_has_exercise` (`workout_id`, `exercise_id`) VALUES (3, 1);
 
 COMMIT;
 

@@ -68,17 +68,9 @@ public class ExerciseController {
 	
 	@DeleteMapping("exercises/{id}")
 	public void deleteExercise(@PathVariable Integer id, HttpServletResponse resp) {
-		try {
-			if(exServ.getExercise(id) != null) {
-				exServ.deleteExerciseById(id);
-				resp.setStatus(204);
-			} else {
-				resp.setStatus(404);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
+		//don't delete anything fk constraints won't allow it just tell user its a bad request
 			resp.setStatus(400);
-		}
+		
 	}
 
 }

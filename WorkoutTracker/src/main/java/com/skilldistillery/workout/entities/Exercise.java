@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Exercise {
 	@Id
@@ -22,6 +24,7 @@ public class Exercise {
 	
 	private Integer weight;
 	
+	@JsonIgnore
 	@ManyToMany(mappedBy = "exercises")
 	private List<Workout> workouts;
 

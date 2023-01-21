@@ -5,16 +5,16 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
--- Schema workouts
+-- Schema workoutdb
 -- -----------------------------------------------------
-DROP SCHEMA IF EXISTS `workouts` ;
+DROP SCHEMA IF EXISTS `workoutdb` ;
 
 -- -----------------------------------------------------
--- Schema workouts
+-- Schema workoutdb
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `workouts` DEFAULT CHARACTER SET utf8 ;
+CREATE SCHEMA IF NOT EXISTS `workoutdb` DEFAULT CHARACTER SET utf8 ;
 SHOW WARNINGS;
-USE `workouts` ;
+USE `workoutdb` ;
 
 -- -----------------------------------------------------
 -- Table `workout`
@@ -87,7 +87,7 @@ SHOW WARNINGS;
 -- Data for table `workout`
 -- -----------------------------------------------------
 START TRANSACTION;
-USE `workouts`;
+USE `workoutdb`;
 INSERT INTO `workout` (`id`, `date`) VALUES (1, '1000-01-01');
 
 COMMIT;
@@ -97,7 +97,7 @@ COMMIT;
 -- Data for table `exercise`
 -- -----------------------------------------------------
 START TRANSACTION;
-USE `workouts`;
+USE `workoutdb`;
 INSERT INTO `exercise` (`id`, `name`, `description`) VALUES (1, 'bench press', 'weighted barbell in prone ');
 
 COMMIT;
@@ -107,7 +107,7 @@ COMMIT;
 -- Data for table `workouts_have_exercises`
 -- -----------------------------------------------------
 START TRANSACTION;
-USE `workouts`;
+USE `workoutdb`;
 INSERT INTO `workouts_have_exercises` (`exercises_id`, `workouts_id`) VALUES (1, 1);
 
 COMMIT;

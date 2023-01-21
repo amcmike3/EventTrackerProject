@@ -1,12 +1,12 @@
 package com.skilldistillery.workout.services;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.workout.entities.Exercise;
 import com.skilldistillery.workout.entities.Workout;
 import com.skilldistillery.workout.repositories.WorkoutRepository;
 
@@ -34,7 +34,7 @@ public class WorkoutServiceImpl implements WorkoutService {
 
 	@Override
 	public Workout createWorkout(Workout workout) {
-		return workoutRepo.saveAndFlush(workout);
+		return workoutRepo.save(workout);
 	}
 
 	@Override

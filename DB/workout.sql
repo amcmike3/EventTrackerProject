@@ -39,8 +39,8 @@ DROP TABLE IF EXISTS `exercise` ;
 
 SHOW WARNINGS;
 CREATE TABLE IF NOT EXISTS `exercise` (
-  `id` INT NOT NULL,
-  `name` VARCHAR(100) NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(200) NOT NULL,
   `description` TEXT NULL,
   `weight` INT NULL,
   PRIMARY KEY (`id`))

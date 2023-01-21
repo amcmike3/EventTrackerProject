@@ -67,10 +67,9 @@ public class ExerciseController {
 	}
 	
 	@DeleteMapping("exercises/{id}")
-	public void deleteExercise(@PathVariable Integer id, HttpServletResponse resp) {
-		//don't delete anything fk constraints won't allow it just tell user its a bad request
-			resp.setStatus(400);
-		
+	public void deleteExercise(HttpServletResponse resp) {
+		//tell user its not allowed
+			resp.setStatus(405);
 	}
 
 }

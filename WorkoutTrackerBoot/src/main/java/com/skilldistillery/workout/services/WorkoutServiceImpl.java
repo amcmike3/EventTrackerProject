@@ -66,6 +66,7 @@ public class WorkoutServiceImpl implements WorkoutService {
 		if(opt.isPresent()) {
 			Workout workout = opt.get();
 			workout.setEnabled(false);
+			workoutRepo.saveAndFlush(workout);
 			ans = !workout.isEnabled();
 			
 		} 

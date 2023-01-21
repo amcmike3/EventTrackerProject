@@ -1,5 +1,6 @@
 package com.skilldistillery.workout.services;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.skilldistillery.workout.entities.Exercise;
 import com.skilldistillery.workout.entities.Workout;
+import com.skilldistillery.workout.repositories.ExerciseRepository;
 import com.skilldistillery.workout.repositories.WorkoutRepository;
 
 @Service
@@ -15,6 +17,9 @@ public class WorkoutServiceImpl implements WorkoutService {
 	
 	@Autowired
 	WorkoutRepository workoutRepo;
+	
+	@Autowired
+	private ExerciseRepository exRepo;
 
 	@Override
 	public List<Workout> allWorkouts() {
@@ -56,12 +61,16 @@ public class WorkoutServiceImpl implements WorkoutService {
 
 	@Override
 	public boolean deleteWorkoutById(int id) {
-		Workout workout = workoutRepo.findById(id).get();
-		for (Exercise ex : workout.getExercises()) {
+		boolean ans = false;
+		Optional<Workout> opt = workoutRepo.findById(id);
+		if(opt.isPresent()) {
+			Workout workout = opt.get();
+			workout.setEnabled(false);
+			ans = !workout.isEnabled();
 			
-		}
-		workoutRepo.deleteById(id);
-		return workoutRepo.findById(id).isPresent();
+		} 
+		
+		return ans;
 	}
 
 }

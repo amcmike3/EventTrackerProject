@@ -27,6 +27,7 @@ CREATE TABLE IF NOT EXISTS `workout` (
   `date` DATETIME NOT NULL,
   `mood` INT NULL,
   `notes` TEXT NULL,
+  `enabled` TINYINT NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -43,8 +44,6 @@ CREATE TABLE IF NOT EXISTS `exercise` (
   `name` VARCHAR(200) NOT NULL,
   `description` TEXT NULL,
   `weight` INT NULL,
-  `reps` INT NULL,
-  `sets` INT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -93,9 +92,9 @@ SHOW WARNINGS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `workoutdb`;
-INSERT INTO `workout` (`id`, `date`, `mood`, `notes`) VALUES (1, '1000-01-01', 3, 'great workout but felt lethargic');
-INSERT INTO `workout` (`id`, `date`, `mood`, `notes`) VALUES (2, '1000-01-12', 5, 'just another day');
-INSERT INTO `workout` (`id`, `date`, `mood`, `notes`) VALUES (3, '1000-01-04', 10, 'totally pumped today');
+INSERT INTO `workout` (`id`, `date`, `mood`, `notes`, `enabled`) VALUES (1, '1000-01-01', 3, 'great workout but felt lethargic', 1);
+INSERT INTO `workout` (`id`, `date`, `mood`, `notes`, `enabled`) VALUES (2, '1000-01-12', 5, 'just another day', 1);
+INSERT INTO `workout` (`id`, `date`, `mood`, `notes`, `enabled`) VALUES (3, '1000-01-04', 10, 'totally pumped today', 1);
 
 COMMIT;
 
@@ -105,26 +104,9 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `workoutdb`;
-INSERT INTO `exercise` (`id`, `name`, `description`, `weight`, `reps`, `sets`) VALUES (1, 'bench press', 'weighted barbell inverse prone ', 165, 8, 3);
-INSERT INTO `exercise` (`id`, `name`, `description`, `weight`, `reps`, `sets`) VALUES (2, 'leg press', 'prone machine', 45, 8, 2);
-INSERT INTO `exercise` (`id`, `name`, `description`, `weight`, `reps`, `sets`) VALUES (3, 'weighted pull-up', 'pull up with weight', 25, 8, 4);
-
-COMMIT;
-
-
--- -----------------------------------------------------
--- Data for table `workout_has_exercise`
--- -----------------------------------------------------
-START TRANSACTION;
-USE `workoutdb`;
-INSERT INTO `workout_has_exercise` (`workout_id`, `exercise_id`) VALUES (1, 2);
-INSERT INTO `workout_has_exercise` (`workout_id`, `exercise_id`) VALUES (1, 3);
-INSERT INTO `workout_has_exercise` (`workout_id`, `exercise_id`) VALUES (1, 1);
-INSERT INTO `workout_has_exercise` (`workout_id`, `exercise_id`) VALUES (2, 1);
-INSERT INTO `workout_has_exercise` (`workout_id`, `exercise_id`) VALUES (2, 2);
-INSERT INTO `workout_has_exercise` (`workout_id`, `exercise_id`) VALUES (2, 3);
-INSERT INTO `workout_has_exercise` (`workout_id`, `exercise_id`) VALUES (3, 2);
-INSERT INTO `workout_has_exercise` (`workout_id`, `exercise_id`) VALUES (3, 1);
+INSERT INTO `exercise` (`id`, `name`, `description`, `weight`) VALUES (1, 'bench press', 'weighted barbell inverse prone ', 165);
+INSERT INTO `exercise` (`id`, `name`, `description`, `weight`) VALUES (2, 'leg press', 'prone machine', 45);
+INSERT INTO `exercise` (`id`, `name`, `description`, `weight`) VALUES (3, 'weighted pull-up', 'pull up with weight', 25);
 
 COMMIT;
 

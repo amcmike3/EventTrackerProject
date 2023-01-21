@@ -26,6 +26,10 @@ public class Workout {
 	
 	private String notes;
 	
+	private boolean enabled;
+	
+	
+
 	@ManyToMany
 	@JoinTable(name = "workout_has_exercise", 
 	joinColumns = @JoinColumn(name = "exercise_id"), 
@@ -35,6 +39,7 @@ public class Workout {
 	public Workout() {
 		mood = -1;
 		date = LocalDateTime.now();
+		enabled = true;
 		
 	}
 
@@ -115,5 +120,13 @@ public class Workout {
 
 	public void setNotes(String notes) {
 		this.notes = notes;
+	}
+	
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}
 }

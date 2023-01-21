@@ -4,10 +4,12 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.skilldistillery.workout.entities.Workout;
 import com.skilldistillery.workout.repositories.WorkoutRepository;
 
+@Service
 public class WorkoutServiceImpl implements WorkoutService {
 	
 	@Autowired

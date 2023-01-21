@@ -28,8 +28,8 @@ public class Workout {
 	
 	@ManyToMany
 	@JoinTable(name = "workouts_have_exercises", 
-	joinColumns = @JoinColumn(name = "exercises_id"), 
-	inverseJoinColumns = @JoinColumn(name = "workouts_id"))
+	joinColumns = @JoinColumn(name = "exercise_id"), 
+	inverseJoinColumns = @JoinColumn(name = "workout_id"))
 	private List<Exercise> exercises;
 
 	public Workout() {

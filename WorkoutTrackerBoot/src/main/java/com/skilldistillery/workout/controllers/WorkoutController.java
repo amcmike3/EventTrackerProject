@@ -4,7 +4,9 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.aspectj.lang.annotation.DeclareMixin;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -69,6 +71,21 @@ public class WorkoutController {
 		resp.setStatus(400);
 		}
 		return ans;
+	}
+	
+	@DeleteMapping("workouts/{id}")
+	public void deleteWorkout(@PathVariable Integer id, HttpServletResponse resp) {
+		try {
+			if(workServ.getWorkout(id) != null) {
+				workServ.deleteWorkoutById(id);
+				resp.setStatus(204);
+			} else {
+				resp.setStatus(404);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			resp.setStatus(400);
+		}
 	}
 
 }

@@ -56,6 +56,10 @@ public class WorkoutServiceImpl implements WorkoutService {
 
 	@Override
 	public boolean deleteWorkoutById(int id) {
+		Workout workout = workoutRepo.findById(id).get();
+		for (Exercise ex : workout.getExercises()) {
+			
+		}
 		workoutRepo.deleteById(id);
 		return workoutRepo.findById(id).isPresent();
 	}

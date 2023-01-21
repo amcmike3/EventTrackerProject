@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -63,6 +64,21 @@ public class ExerciseController {
 			resp.setStatus(400);
 		}
 		return ans;
+	}
+	
+	@DeleteMapping("exercises/{id}")
+	public void deleteExercise(@PathVariable Integer id, HttpServletResponse resp) {
+		try {
+			if(exServ.getExercise(id) != null) {
+				exServ.deleteExerciseById(id);
+				resp.setStatus(204);
+			} else {
+				resp.setStatus(404);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			resp.setStatus(400);
+		}
 	}
 
 }

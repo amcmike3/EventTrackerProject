@@ -25,6 +25,8 @@ SHOW WARNINGS;
 CREATE TABLE IF NOT EXISTS `workout` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `date` DATETIME NOT NULL,
+  `mood` INT NULL,
+  `notes` TEXT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -89,7 +91,7 @@ SHOW WARNINGS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `workoutdb`;
-INSERT INTO `workout` (`id`, `date`) VALUES (1, '1000-01-01');
+INSERT INTO `workout` (`id`, `date`, `mood`, `notes`) VALUES (1, '1000-01-01', NULL, NULL);
 
 COMMIT;
 

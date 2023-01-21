@@ -1,5 +1,6 @@
 package com.skilldistillery.workout.services;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,19 +34,30 @@ public class WorkoutServiceImpl implements WorkoutService {
 
 	@Override
 	public Workout createWorkout(Workout workout) {
-		return null;
+		return workoutRepo.saveAndFlush(workout);
 	}
 
 	@Override
 	public Workout updateWorkout(int id, Workout workout) {
-		// TODO Auto-generated method stub
-		return null;
+		Workout ans = null;
+		Optional<Workout> opt = workoutRepo.findById(id);
+		if(opt.isPresent()) {
+			ans = opt.get();
+			if(workout.getMood() != 0) {
+				ans.setMood(workout.getMood());
+			}
+			if(workout.getNotes() != null && workout.getNotes() != "") {
+				ans.setNotes(workout.getNotes());
+			}
+			workoutRepo.saveAndFlush(ans);
+		}
+		return ans;
 	}
 
 	@Override
 	public boolean deleteWorkoutById(int id) {
-		// TODO Auto-generated method stub
-		return false;
+		workoutRepo.deleteById(id);
+		return workoutRepo.findById(id).isPresent();
 	}
 
 }

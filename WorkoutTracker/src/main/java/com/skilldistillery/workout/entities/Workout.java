@@ -21,7 +21,10 @@ public class Workout {
 	private int id;
 
 	private LocalDateTime date;
-
+	
+	private Integer mood;
+	
+	private String notes;
 	
 	@ManyToMany
 	@JoinTable(name = "workouts_have_exercises", 
@@ -30,6 +33,8 @@ public class Workout {
 	private List<Exercise> exercises;
 
 	public Workout() {
+		mood = -1;
+		date = LocalDateTime.now();
 		
 	}
 
@@ -94,5 +99,21 @@ public class Workout {
 
 	public void setDate(LocalDateTime date) {
 		this.date = date;
+	}
+
+	public Integer getMood() {
+		return mood;
+	}
+
+	public void setMood(Integer mood) {
+		this.mood = mood;
+	}
+
+	public String getNotes() {
+		return notes;
+	}
+
+	public void setNotes(String notes) {
+		this.notes = notes;
 	}
 }

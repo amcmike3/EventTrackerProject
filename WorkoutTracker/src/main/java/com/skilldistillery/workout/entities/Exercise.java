@@ -1,11 +1,14 @@
 package com.skilldistillery.workout.entities;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Exercise {
@@ -18,6 +21,34 @@ public class Exercise {
 	private String description;
 	
 	private Integer weight;
+	
+	@ManyToMany(mappedBy = "exercises")
+	private List<Workout> workouts;
+
+	public List<Workout> getWorkouts() {
+		return workouts;
+	}
+
+	public void setWorkouts(List<Workout> workouts) {
+		this.workouts = workouts;
+	}
+	
+	public void addWorkout(Workout workout) {
+		if(workouts == null) {
+			workouts = new ArrayList<>();
+		}
+		if (! workouts.contains(workout)) {
+			workouts.add(workout);
+			workout.addExercise(this);
+		}
+	}
+	
+	public void removeWorkout(Workout workout) {
+		if (workouts != null && workouts.contains(workout)) {
+			workouts.remove(workout);
+			workout.removeExercise(this);
+		}
+	}
 
 	public int getId() {
 		return id;

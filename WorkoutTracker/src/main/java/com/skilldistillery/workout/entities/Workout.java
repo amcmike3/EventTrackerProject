@@ -1,12 +1,17 @@
 package com.skilldistillery.workout.entities;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Workout {
@@ -14,11 +19,43 @@ public class Workout {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	private LocalDateTime date;
+
 	
+	@ManyToMany
+	@JoinTable(name = "workouts_have_exercises", 
+	joinColumns = @JoinColumn(name = "workout_id"), 
+	inverseJoinColumns = @JoinColumn(name = "exercise_id"))
+	private List<Exercise> exercises;
+
 	public Workout() {
 		
+	}
+
+	public List<Exercise> getExercises() {
+		return exercises;
+	}
+
+	public void setExercises(List<Exercise> exercises) {
+		this.exercises = exercises;
+	}
+
+	public void addExercise(Exercise exercise) {
+		if(exercises == null) {
+			exercises = new ArrayList<>();
+		}
+		if (! exercises.contains(exercise)) {
+			exercises.add(exercise);
+			exercise.addWorkout(this);
+		}
+	}
+	
+	public void removeExercise(Exercise exercise) {
+		if (exercises != null && exercises.contains(exercise)) {
+			exercises.remove(exercise);
+			exercise.removeWorkout(this);
+		}
 	}
 
 	public int getId() {

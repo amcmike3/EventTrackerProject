@@ -44,6 +44,8 @@ CREATE TABLE IF NOT EXISTS `exercise` (
   `name` VARCHAR(200) NOT NULL,
   `description` TEXT NULL,
   `weight` INT NULL,
+  `reps` INT NULL,
+  `sets` INT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -104,9 +106,9 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `workoutdb`;
-INSERT INTO `exercise` (`id`, `name`, `description`, `weight`) VALUES (1, 'bench press', 'weighted barbell inverse prone ', 165);
-INSERT INTO `exercise` (`id`, `name`, `description`, `weight`) VALUES (2, 'leg press', 'prone machine', 45);
-INSERT INTO `exercise` (`id`, `name`, `description`, `weight`) VALUES (3, 'weighted pull-up', 'pull up with weight', 25);
+INSERT INTO `exercise` (`id`, `name`, `description`, `weight`, `reps`, `sets`) VALUES (1, 'bench press', 'weighted barbell inverse prone ', 165, 10, 3);
+INSERT INTO `exercise` (`id`, `name`, `description`, `weight`, `reps`, `sets`) VALUES (2, 'leg press', 'prone machine', 45, 10, 3);
+INSERT INTO `exercise` (`id`, `name`, `description`, `weight`, `reps`, `sets`) VALUES (3, 'weighted pull-up', 'pull up with weight', 25, 10, 3);
 
 COMMIT;
 

@@ -76,6 +76,7 @@ public class WorkoutController {
 	@DeleteMapping("workouts/{id}")
 	public void deleteWorkout(@PathVariable Integer id, HttpServletResponse resp) {
 		//toggle enabled column in database to false
+		// enabled vs disabled will be handles on front end
 		try {
 			if(workServ.deleteWorkoutById(id)) {
 				resp.setStatus(204);

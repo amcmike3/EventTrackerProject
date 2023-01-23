@@ -12,4 +12,4 @@ Java, SQL, AWS, Javascript, TypeScript, Angular, Spring Data JPA, Spring Boot, D
 
 
 ## Database Schema
-<![](https://github.com/amcmike3/EventTrackerProject/blob/main/Screen%20Shot%202023-01-23%20at%208.20.34%20AM.png)
+![](https://github.com/amcmike3/EventTrackerProject/blob/main/Screen%20Shot%202023-01-23%20at%208.20.34%20AM.png)

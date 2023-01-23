@@ -1,7 +1,7 @@
 # EventTrackerProject
 - This EventTrackerProject tracks workouts so weight, reps, and sets of exercises can be recorded to track growth.
 
-## <a href="http://54.201.168.70:8080/WorkoutTrackerBoot/">Active Deployed Server<a/>
+## <a href="http://54.201.168.70:8080/WorkoutTrackerBoot/">Active Deployed Server Link<a/>
 
 
 ## Technologies
@@ -22,10 +22,10 @@
 - HTML
 - CSS
 
-## <a href="https://github.com/amcmike3/EventTrackerProject/blob/main/postman/postman_collection.json"> Postman Collection<a/>
-- Importable postman collection at link above for a local instances
+## <a href="https://github.com/amcmike3/EventTrackerProject/blob/main/postman/postman_collection.json"> Postman Collection Link<a/>
+- Importable postman collection at link above for a local instances only
 ### Restful API Mappings:
-##### workouts:
+#### workouts:
 
 | HTTP Verb | URI                  | Request Body | Response Body | Purpose |
 |-----------|----------------------|--------------|---------------|---------|
@@ -36,7 +36,7 @@
 | PATCH     | `Not Allowed`   |  | |  |
 | DELETE    | `http://54.201.168.70:8080/WorkoutTrackerBoot/api/workouts/1`   |              | | **Delete** route changes enabled column to false in DB |
 
-##### exercises:
+#### exercises:
 | HTTP Verb | URI                  | Request Body | Response Body | Purpose |
 |-----------|----------------------|--------------|---------------|---------|
 | GET       | `http://54.201.168.70:8080/WorkoutTrackerBoot/api/exercises`      |              | Collection all exercises | **List** or **collection** endpoint |

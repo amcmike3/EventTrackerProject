@@ -18,11 +18,11 @@ Java, SQL, AWS, Javascript, TypeScript, Angular, Spring Data JPA, Spring Boot, D
 | HTTP Verb | URI                  | Request Body | Response Body | Purpose |
 |-----------|----------------------|--------------|---------------|---------|
 | GET       | `WorkoutTrackerBoot/api/workouts`      |              | Collection all workouts | **List** or **collection** endpoint |
-| GET       | `WorkoutTrackerBoot/api/workouts/{id}`   |              | Representation of _book_ `17` | **Retrieve** endpoint |
-| POST      | `WorkoutTrackerBoot/api/workouts`      | Representation of a new _book_ resource | Description of the result of the operation | **Create** endpoint |
-| PUT       | `WorkoutTrackerBoot/api/workouts`   | Representation of a new version of _book_ `17` | | **Replace** endpoint |
+| GET       | `WorkoutTrackerBoot/api/workouts/1`   |              | Representation of workout '1' | **Retrieve** endpoint |
+| POST      | `WorkoutTrackerBoot/api/workouts`      | Representation of a workout | Description of the result of the operation | **Create** endpoint |
+| PUT       | `WorkoutTrackerBoot/api/workouts`   | Representation of a new version of workout `1` | | **Replace** endpoint |
 | PATCH     | `Not Allowed`   |  | |  |
-| DELETE    | `WorkoutTrackerBoot/api/workouts/{id}`   |              | | **Delete** route changes enabled to false in DB |
+| DELETE    | `WorkoutTrackerBoot/api/workouts/1`   |              | | **Delete** route changes enabled column to false in DB |
 
 
 

@@ -15,7 +15,7 @@ Java, SQL, AWS, Javascript, TypeScript, Angular, Spring Data JPA, Spring Boot, D
 | HTTP Verb | URI                  | Request Body | Response Body | Purpose |
 |-----------|----------------------|--------------|---------------|---------|
 | GET       | `WorkoutTrackerBoot/api/workouts`      |              | Collection all workouts | **List** or **collection** endpoint |
-| GET       | `WorkoutTrackerBoot/api/workouts/1`   |              | Representation of workout '1' | **Retrieve** endpoint |
+| GET       | `WorkoutTrackerBoot/api/workouts/1`   |              | Representation of workout `1` | **Retrieve** endpoint |
 | POST      | `WorkoutTrackerBoot/api/workouts`      | Representation of a workout | Description of the result of the operation | **Create** endpoint |
 | PUT       | `WorkoutTrackerBoot/api/workouts`   | Representation of a new version of workout `1` | | **Replace** endpoint |
 | PATCH     | `Not Allowed`   |  | |  |
@@ -25,7 +25,7 @@ Java, SQL, AWS, Javascript, TypeScript, Angular, Spring Data JPA, Spring Boot, D
 | HTTP Verb | URI                  | Request Body | Response Body | Purpose |
 |-----------|----------------------|--------------|---------------|---------|
 | GET       | `WorkoutTrackerBoot/api/exercises`      |              | Collection all exercises | **List** or **collection** endpoint |
-| GET       | `WorkoutTrackerBoot/api/exercises/1`   |              | Representation of exercise '1' | **Retrieve** endpoint |
+| GET       | `WorkoutTrackerBoot/api/exercises/1`   |              | Representation of exercise `1` | **Retrieve** endpoint |
 | POST      | `WorkoutTrackerBoot/api/exercises`      | Representation of a exercise | Description of the result of the operation | **Create** endpoint |
 | PUT       | `WorkoutTrackerBoot/api/exercises`   | Representation of a new version of exercise `1` | | **Replace** endpoint |
 | PATCH     | `Not Allowed`   |  | |  |

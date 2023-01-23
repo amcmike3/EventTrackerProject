@@ -4,6 +4,7 @@
 Java, SQL, AWS, Javascript, TypeScript, Angular, Spring Data JPA, Spring Boot, DOM, REST, JSON, AJAX, XHR, Bootstrap, HTML, CSS.
 
 ## <a href="https://github.com/amcmike3/EventTrackerProject/blob/main/postman/postman_collection.json"> Postman Collection<a/>
+- Importable postman collection at link above 
 ### Restful API Mappings:
 - http://localhost:8082/api/workouts
 - http://localhost:8082/api/workouts/1

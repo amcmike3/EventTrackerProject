@@ -1,7 +1,7 @@
 # EventTrackerProject
 - This EventTrackerProject tracks workouts so weight, reps, and sets of exercises can be recorded to track growth.
 
-##<a href="http://54.201.168.70:8080/WorkoutTrackerBoot/">Active Deployed Server<a/>
+## <a href="http://54.201.168.70:8080/WorkoutTrackerBoot/">Active Deployed Server<a/>
 
 
 ## Technologies

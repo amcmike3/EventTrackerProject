@@ -1,10 +1,14 @@
 # EventTrackerProject
 - This EventTrackerProject tracks workouts so weight, reps, and sets of exercises can be recorded to track growth.
+
+##<a href="http://54.201.168.70:8080/WorkoutTrackerBoot/">Active Deployed Server<a/>
+
+
 ## Technologies
 Java, SQL, AWS, Javascript, TypeScript, Angular, Spring Data JPA, Spring Boot, DOM, REST, JSON, AJAX, XHR, Bootstrap, HTML, CSS.
 
 ## <a href="https://github.com/amcmike3/EventTrackerProject/blob/main/postman/postman_collection.json"> Postman Collection<a/>
-- Importable postman collection at link above 
+- Importable postman collection at link above
 ### Restful API Mappings:
 - http://localhost:8082/api/workouts
 - http://localhost:8082/api/workouts/1

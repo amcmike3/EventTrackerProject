@@ -5,4 +5,4 @@
 Java, SQL, AWS, Javascript, TypeScript, Angular, Spring Data JPA, Spring Boot, DOM, REST, JSON, AJAX, XHR, Bootstrap, HTML, CSS.
 
 ## database schema
-<![https://github.com/amcmike3/EventTrackerProject/blob/main/Screen%20Shot%202023-01-23%20at%208.20.34%20AM.png]()
+<![](https://github.com/amcmike3/EventTrackerProject/blob/main/Screen%20Shot%202023-01-23%20at%208.20.34%20AM.png)

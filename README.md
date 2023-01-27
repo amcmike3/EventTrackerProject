@@ -24,7 +24,7 @@
 
 ## <a href="https://github.com/amcmike3/EventTrackerProject/blob/main/postman/postman_collection.json"> Postman Collection Link<a/>
 - Importable postman collection at link above for a local instances only
-### Restful API Mappings:
+## Restful API Mappings:
 #### workouts:
 
 | HTTP Verb | URI                  | Request Body | Response Body | Purpose |

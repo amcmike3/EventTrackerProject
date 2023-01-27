@@ -27,7 +27,11 @@ public class WorkoutController {
 
 	@GetMapping("workouts")
 	public List<Workout> allWorkouts() {
-		return workServ.allWorkouts();
+		List<Workout> workouts = workServ.allWorkouts();
+		for (Workout workout : workouts) {
+			workout.getExercises().size();
+		}
+		return workouts;
 	}
 
 	@GetMapping("workouts/{id}")

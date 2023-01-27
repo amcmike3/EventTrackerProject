@@ -20,8 +20,8 @@ function loadWorkouts() {
 		if (xhr.readyState === 4) {
 			if (xhr.status === 200) {
 				console.log(JSON.parse(xhr.responseText));
-				
 				displayWorkouts(JSON.parse(xhr.responseText));
+				window.workouts = JSON.parse(xhr.responseText);
 			} else {
 				//TODO display an error
 			}
@@ -70,12 +70,16 @@ function displayWorkouts(workoutList) {
 		
 		id.textContent = workout.id;
 		date.textContent = workout.date.substring(0,10);
-		console.log(workout.date);
 		notes.textContent = workout.notes;
 		tr.appendChild(id);	
 		tr.appendChild(date);	
-		tr.appendChild(notes);	
-		tr.addEventListener('click', displayDetails);
+		tr.appendChild(notes);
+		let button = document.createElement('input');
+		button.type = 'submit';
+		button.value = 'details';	
+		button.addEventListener('click', displayDetails);
+		tr.appendChild(button);
+		
 		
 		table.appendChild(tr);
 	}
@@ -83,13 +87,28 @@ function displayWorkouts(workoutList) {
 }
 
 function displayDetails(e){
-	let nextWorkout = e.target.nextElementSibling;
-	let table = e.target.parentElement;
-	
-//	e.target.exercises finish this method
+	e.preventDefault()
+	removeExercises();
+	let workout = e.target.parentElement;
+	let table = e.target.parentElement.parentElement;
+	let content = document.createElement('div');
+	let workoutId = +e.target.previousElementSibling.previousElementSibling.previousElementSibling.textContent;
+	let exercises = window.workouts[workoutId - 1].exercises;
+	for (let ex of exercises){
+		let para = document.createElement('p');
+		para.textContent = ex.name + " Reps: " + ex.reps + " Sets: " + ex.sets + " Weight: " + ex.weight;
+		content.appendChild(para);	
+	}
+	window.exercise = content;
+	table.insertBefore(content, workout);
 	
 }
 
+function removeExercises(e){
+	if (window.exercise != undefined){
+	window.exercise.parentElement.removeChild(window.exercise);		
+	}
+}
 
 
 

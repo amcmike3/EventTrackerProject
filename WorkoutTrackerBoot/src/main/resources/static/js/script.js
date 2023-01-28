@@ -22,8 +22,9 @@ function loadWorkouts() {
 	xhr.onreadystatechange = function() {
 		if (xhr.readyState === 4) {
 			if (xhr.status === 200) {
-				displayWorkouts(JSON.parse(xhr.responseText));
 				window.workouts = JSON.parse(xhr.responseText);
+				workoutHeaders();
+				displayWorkouts(JSON.parse(xhr.responseText));
 			} else {
 				//TODO display an error
 			}
@@ -85,10 +86,11 @@ function displayWorkouts(workoutList) {
 			tr.appendChild(button);
 
 
-			table.appendChild(tr);
+			body.appendChild(tr);
 
 		}
 	}
+	table.appendChild(body);
 	contentDiv.appendChild(table);
 }
 
@@ -115,8 +117,13 @@ function displayDetails(e) {
 	deleteBtn.type = "submit";
 	deleteBtn.value = "delete";
 	deleteBtn.addEventListener('click', deleteWorkout);
-	content.appendChild(deleteBtn);
+	let addExerciseBtn = document.createElement('input');
+	addExerciseBtn.type = "submit";
+	addExerciseBtn.value = "Add Exercise";
+	addExerciseBtn.addEventListener('click', addExercise);
 	content.appendChild(updateBtn);
+	content.appendChild(deleteBtn);
+	content.appendChild(addExerciseBtn);
 	content.style.border = "solid";
 	window.exercise = content;
 	sibling.appendChild(content);
@@ -142,6 +149,7 @@ function createWorkout(e) {
 	xhr.onreadystatechange = function() {
 		if (xhr.readyState === 4) {
 			if (xhr.status === 201) {
+				form.reset();
 				let contentDiv = document.getElementById('content');
 				contentDiv.textContent = '';
 				loadWorkouts();
@@ -160,7 +168,6 @@ function createWorkout(e) {
 
 let updateWorkoutForm = function(e) {
 	e.preventDefault();
-	console.log('in update function');
 	let workoutId = +e.target.parentElement.parentElement.previousElementSibling.previousElementSibling.textContent;
 	let workout = window.workouts[workoutId - 1];
 	let div = e.target.parentElement;
@@ -248,5 +255,90 @@ let deleteWorkout = function(e) {
 
 
 
+let workoutHeaders = function (){
+	let h2 = document.createElement('h2');
+	h2.textContent = "days since last workout: " + daysSinceLastWorkout();
+	
+	let content = document.getElementById('content');
+	content.appendChild(h2);
+}
+
+let daysSinceLastWorkout = function (){
+	let lastWorkout = new Date(window.workouts[window.workouts.length - 1].date);
+	let today = new Date();
+	console.log(lastWorkout);
+	console.log(today);
+	
+	timeDifference = today.getTime() - lastWorkout.getTime();
+	
+	return Math.floor(timeDifference / (1000 * 3600 * 24));
+	
+}
+
+function addExercise(e){
+	e.preventDefault();
+	console.log(window.workouts);
+ 	let workoutId = +e.target.parentElement.parentElement.previousElementSibling.previousElementSibling.textContent;
+ 	console.log(workoutId);
+	let workout = window.workouts[workoutId - 1];
+ 	let parent = e.target.parentElement;
+	parent.textContent = "";
+ 	parent.appendChild(document.createElement('br'));
+	let form = document.createElement('form');
+	let name = document.createElement('input');
+	let reps = document.createElement('input');
+	let sets = document.createElement('input');
+	let weight = document.createElement('input');
+	name.type = "text"
+	name.placeholder = "exercise name";
+	reps.name = "reps";
+	sets.name = "sets";
+	weight.name = "weight";
+	reps.type = "number";
+	sets.type = "number";
+	weight.type = "number";
+	let repsLbl = document.createElement('label');
+	repsLbl.for = "reps"
+	repsLbl.textContent = "reps"
+	let setsLbl = document.createElement('label');
+	setsLbl.for = "sets"
+	setsLbl.textContent = "sets"
+	let weightLbl = document.createElement('label');
+	weightLbl.for = "weight"
+	weightLbl.textContent = "weight"
+	let updateBtn = document.createElement('input');
+	updateBtn.type = "submit";
+	updateBtn.value = "create";
+	let description = document.createElement('textarea');
+	description.rows = "10";
+	description.cols = "15";
+	description.textContent = "description: ";
+	updateBtn.addEventListener('click', createExercise);
+	form.appendChild(name);
+	form.appendChild(document.createElement('br'));
+	form.appendChild(repsLbl);
+	form.appendChild(document.createElement('br'));
+	form.appendChild(reps);
+	form.appendChild(document.createElement('br'));
+	form.appendChild(setsLbl);
+	form.appendChild(document.createElement('br'));
+	form.appendChild(sets);
+	form.appendChild(document.createElement('br'));
+	form.appendChild(weightLbl);
+	form.appendChild(document.createElement('br'));
+	form.appendChild(weight);
+	form.appendChild(document.createElement('br'));
+	form.appendChild(description);
+	form.appendChild(document.createElement('br'));
+	form.appendChild(updateBtn);
+	parent.appendChild(form);
+	
+	
+}
+
+function createExercise(e){
+	e.preventDefault();
+	console.log("create xhr and send to backend");
+}
 
 

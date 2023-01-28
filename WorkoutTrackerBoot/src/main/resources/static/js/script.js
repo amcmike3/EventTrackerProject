@@ -8,6 +8,9 @@ window.addEventListener('load', (e) => {
 
 function init() {
 	loadWorkouts();
+	let createWorkoutBtn = document.getElementsByName('createWorkoutBtn')[0];
+	console.log(createWorkoutBtn)
+	createWorkoutBtn.addEventListener('click', createWorkout);
 }
 
 
@@ -19,7 +22,6 @@ function loadWorkouts() {
 	xhr.onreadystatechange = function() {
 		if (xhr.readyState === 4) {
 			if (xhr.status === 200) {
-				console.log(JSON.parse(xhr.responseText));
 				displayWorkouts(JSON.parse(xhr.responseText));
 				window.workouts = JSON.parse(xhr.responseText);
 			} else {
@@ -43,7 +45,7 @@ function displayWorkouts(workoutList) {
 	table.name = "contentTable"
 	table.style.border = "solid";
 	let head = document.createElement('thead');
-	
+
 	table.appendChild(head);
 	head = document.createElement('thead');
 	let id = document.createElement('th');
@@ -52,64 +54,197 @@ function displayWorkouts(workoutList) {
 	id.textContent = "Id";
 	date.textContent = "Date"
 	notes.textContent = "Notes";
-	head.appendChild(id);	
-	head.appendChild(date);	
+	head.appendChild(id);
+	head.appendChild(date);
 	head.appendChild(notes);
-	table.appendChild(head);	
-	
-	
-	
+	table.appendChild(head);
+
+
+
 	let body = document.createElement('tbody');
 	for (let workout of workoutList) {
-		let tr = document.createElement('tr');
-		id = document.createElement('td');		
-		date = document.createElement('td');		
-		notes = document.createElement('td');
-		date.style.borderLeft = "solid"
-		date.style.borderRight = "solid";	
-		
-		id.textContent = workout.id;
-		date.textContent = workout.date.substring(0,10);
-		notes.textContent = workout.notes;
-		tr.appendChild(id);	
-		tr.appendChild(date);	
-		tr.appendChild(notes);
-		let button = document.createElement('input');
-		button.type = 'submit';
-		button.value = 'details';	
-		button.addEventListener('click', displayDetails);
-		tr.appendChild(button);
-		
-		
-		table.appendChild(tr);
+		if (workout.enabled) {
+
+			let tr = document.createElement('tr');
+			id = document.createElement('td');
+			date = document.createElement('td');
+			notes = document.createElement('td');
+			date.style.borderLeft = "solid"
+			date.style.borderRight = "solid";
+
+			id.textContent = workout.id;
+			date.textContent = workout.date.substring(0, 10);
+			notes.textContent = workout.notes;
+			tr.appendChild(id);
+			tr.appendChild(date);
+			tr.appendChild(notes);
+			let button = document.createElement('input');
+			button.type = 'submit';
+			button.value = 'details';
+			button.addEventListener('click', displayDetails);
+			tr.appendChild(button);
+
+
+			table.appendChild(tr);
+
+		}
 	}
 	contentDiv.appendChild(table);
 }
 
-function displayDetails(e){
-	e.preventDefault()
+function displayDetails(e) {
+	e.preventDefault();
 	removeExercises();
-	let workout = e.target.parentElement;
-	let table = e.target.parentElement.parentElement;
+	let sibling = e.target.previousElementSibling
 	let content = document.createElement('div');
 	let workoutId = +e.target.previousElementSibling.previousElementSibling.previousElementSibling.textContent;
 	let exercises = window.workouts[workoutId - 1].exercises;
-	for (let ex of exercises){
+	let mood = document.createElement('p');
+	mood.textContent = "Mood: " + window.workouts[workoutId - 1].mood;
+	content.appendChild(mood);
+	for (let ex of exercises) {
 		let para = document.createElement('p');
 		para.textContent = ex.name + " Reps: " + ex.reps + " Sets: " + ex.sets + " Weight: " + ex.weight;
-		content.appendChild(para);	
+		content.appendChild(para);
 	}
+	let updateBtn = document.createElement('input');
+	updateBtn.type = "submit";
+	updateBtn.value = "update";
+	updateBtn.addEventListener('click', updateWorkoutForm);
+	let deleteBtn = document.createElement('input');
+	deleteBtn.type = "submit";
+	deleteBtn.value = "delete";
+	deleteBtn.addEventListener('click', deleteWorkout);
+	content.appendChild(deleteBtn);
+	content.appendChild(updateBtn);
+	content.style.border = "solid";
 	window.exercise = content;
-	table.insertBefore(content, workout);
+	sibling.appendChild(content);
+
+}
+
+function removeExercises(e) {
+	if (window.exercise != undefined) {
+		window.exercise.parentElement.removeChild(window.exercise);
+	}
+}
+
+function createWorkout(e) {
+	e.preventDefault();
+	let form = e.target.parentElement;
+	workout = {
+		notes: form.notes.value,
+		mood: +form.mood.value
+	};
+
+	let xhr = new XMLHttpRequest();
+	xhr.open('POST', "api/workouts");
+	xhr.onreadystatechange = function() {
+		if (xhr.readyState === 4) {
+			if (xhr.status === 201) {
+				let contentDiv = document.getElementById('content');
+				contentDiv.textContent = '';
+				loadWorkouts();
+			} else {
+				let fail = document.createElement('div');
+				fail.textContent = "Failed to create workout event";
+				fail.style.color = "red";
+				form.parentElement.insertBefore(fail, form);
+			}
+		}
+	};
+	xhr.setRequestHeader("Content-type", "application/json");
+	xhr.send(JSON.stringify(workout));
+
+}
+
+let updateWorkoutForm = function(e) {
+	e.preventDefault();
+	console.log('in update function');
+	let workoutId = +e.target.parentElement.parentElement.previousElementSibling.previousElementSibling.textContent;
+	let workout = window.workouts[workoutId - 1];
+	let div = e.target.parentElement;
+	div.textContent = "";
+	let form = document.createElement('form');
+	let mood = document.createElement('input');
+	let notes = document.createElement('textarea');
+	notes.rows = "10";
+	notes.cols = "10";
+	notes.textContent = workout.notes;
+	mood.value = workout.mood;
+	
+	let updateBtn = document.createElement('input');
+	updateBtn.type = "submit";
+	updateBtn.value = "update";
+	updateBtn.addEventListener('click', updateWorkoutFormButton);
+	form.appendChild(mood);
+	form.appendChild(document.createElement('br'));
+	form.appendChild(notes);
+	form.appendChild(updateBtn);
+	div.appendChild(form);
+	
+
+}
+function updateWorkoutFormButton(e){
+	e.preventDefault();
+	let workoutId = +e.target.parentElement.parentElement.parentElement.previousElementSibling.previousElementSibling.textContent;
+	let workout = window.workouts[workoutId - 1];
+	workout.notes = e.target.previousElementSibling.value;
+	workout.mood = e.target.previousElementSibling.previousElementSibling.previousElementSibling.value;
+	updateWorkout(workout, workoutId);
+}
+
+function updateWorkout(workout, workoutId) {
+	let xhr = new XMLHttpRequest();
+	xhr.open("PUT", "api/workouts/" + workoutId);
+	
+	xhr.onreadystatechange = function (){
+		if (xhr.readyState === 4) {
+			if (xhr.status === 200) {
+				let contentDiv = document.getElementById('content');
+				contentDiv.textContent = '';
+				loadWorkouts();
+			} else {
+				let fail = document.createElement('div');
+				fail.name = "fail";
+				fail.textContent = "Failed to update workout";
+				fail.style.color = "red";
+				let table = document.getElementById('content');
+				table.appendChild(fail);
+			}
+		}
+	}
+	xhr.setRequestHeader("Content-type", "application/json");
+	xhr.send(JSON.stringify(workout));
+}
+
+let deleteWorkout = function(e) {
+	e.preventDefault();
+	console.log('in delete function');
+	let workoutId = +e.target.parentElement.parentElement.previousElementSibling.previousElementSibling.textContent;
+	
+	let xhr = new XMLHttpRequest();
+	xhr.open("DELETE", "api/workouts/" + workoutId);
+	
+	xhr.onreadystatechange = function (){
+		if (xhr.readyState === 4) {
+			if (xhr.status === 204) {
+				let contentDiv = document.getElementById('content');
+				contentDiv.textContent = '';
+				loadWorkouts();
+			} else {
+				let fail = document.createElement('div');
+				fail.textContent = "Failed to delete workout";
+				fail.style.color = "red";
+				let table = document.getElementById('content');
+				table.appendChild(fail);
+			}
+		}
+	}
+	
+	xhr.send();
 	
 }
-
-function removeExercises(e){
-	if (window.exercise != undefined){
-	window.exercise.parentElement.removeChild(window.exercise);		
-	}
-}
-
 
 
 

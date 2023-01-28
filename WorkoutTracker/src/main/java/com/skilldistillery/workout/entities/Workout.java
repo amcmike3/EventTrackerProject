@@ -37,7 +37,6 @@ public class Workout {
 	private List<Exercise> exercises;
 
 	public Workout() {
-		mood = -1;
 		date = LocalDateTime.now();
 		enabled = true;
 		

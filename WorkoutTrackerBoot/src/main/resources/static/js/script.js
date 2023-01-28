@@ -37,8 +37,10 @@ function loadWorkouts() {
 function displayWorkouts(workoutList) {
 
 	let contentDiv = document.getElementById('content');
+	contentDiv.textContent = "";
 	let label = document.createElement('label');
-	label.style.color = "gray";
+	label.style.color = "white";
+	label.style.fontSize = "50px"
 	label.textContent = "Workouts";
 	contentDiv.appendChild(label);
 	label.for = "contentTable";
@@ -266,8 +268,7 @@ let workoutHeaders = function (){
 let daysSinceLastWorkout = function (){
 	let lastWorkout = new Date(window.workouts[window.workouts.length - 1].date);
 	let today = new Date();
-	console.log(lastWorkout);
-	console.log(today);
+
 	
 	timeDifference = today.getTime() - lastWorkout.getTime();
 	
@@ -277,10 +278,6 @@ let daysSinceLastWorkout = function (){
 
 function addExercise(e){
 	e.preventDefault();
-	console.log(window.workouts);
- 	let workoutId = +e.target.parentElement.parentElement.previousElementSibling.previousElementSibling.textContent;
- 	console.log(workoutId);
-	let workout = window.workouts[workoutId - 1];
  	let parent = e.target.parentElement;
 	parent.textContent = "";
  	parent.appendChild(document.createElement('br'));
@@ -291,6 +288,7 @@ function addExercise(e){
 	let weight = document.createElement('input');
 	name.type = "text"
 	name.placeholder = "exercise name";
+	name.name = "name";
 	reps.name = "reps";
 	sets.name = "sets";
 	weight.name = "weight";
@@ -314,6 +312,12 @@ function addExercise(e){
 	description.cols = "15";
 	description.textContent = "description: ";
 	updateBtn.addEventListener('click', createExercise);
+	let addExercise = document.createElement('label');
+	addExercise.textContent = "Add Exercise";
+	addExercise.for = "name";
+	form.appendChild(addExercise);
+	form.appendChild(document.createElement('br'));
+	form.appendChild(document.createElement('br'));
 	form.appendChild(name);
 	form.appendChild(document.createElement('br'));
 	form.appendChild(repsLbl);
@@ -338,7 +342,31 @@ function addExercise(e){
 
 function createExercise(e){
 	e.preventDefault();
-	console.log("create xhr and send to backend");
+	let workoutId = +e.target.parentElement.parentElement.parentElement.previousElementSibling.previousElementSibling.textContent;
+ 	let workout = {
+		 name: e.target.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.value,
+		 reps: +e.target.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.value,
+		 sets: +e.target.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.value,
+		 weight: +e.target.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.value,
+		 description: e.target.previousElementSibling.previousElementSibling.value
+	 }
+ 	let xhr = new XMLHttpRequest();
+ 	xhr.open('POST', 'api/workouts/' + workoutId + '/exercises');
+ 	xhr.onreadystatechange = function () {
+		 if (xhr.readyState === 4){
+			 if (xhr.status === 201){
+				 loadWorkouts();
+				 displayDetails(e.target.parentElement.parentElement.parentElement.nextElementSibling)
+			 } else {
+				 let fail = document.createElement('div');
+				fail.textContent = "Failed to create Exercise";
+				fail.style.color = "red";
+				 e.target.parentElement.appendChild(fail);
+			 }
+		 }
+	 }
+	 xhr.setRequestHeader("Content-type", "application/json");
+ 	xhr.send(JSON.stringify(workout));
 }
 
 

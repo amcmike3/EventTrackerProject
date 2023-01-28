@@ -3,18 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <title>Workout Tracker</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 <script type="text/javascript" src="js/script.js">
 </script>
+<link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
-<body>
-<h1>Do what other won't today, so tomorrow you can do what others can't</h1>
-<div id="content">
+<body class="col card text-center bg-info">
+<h1 class="bg-success">Do what other won't today, so tomorrow you can do what others can't</h1>
+<div id="content" class="col card text-center bg-primary">
 </div>
 <br>
-<h2>Add a workout</h2>
+<h2 class="bg-success">Add a workout</h2>
 <form name="createWorkout">
 <input type="text" placeholder="mood 1-10" name="mood"><br>
-<textarea rows="20" cols="50" name="notes">Notes: </textarea> <br>
+<textarea rows="5" cols="50" name="notes">Notes: </textarea> <br>
 <input type="submit" value="Create" name="createWorkoutBtn">
 
 </form>

@@ -1,7 +1,5 @@
-console.log("script.js loaded")
 
 window.addEventListener('load', (e) => {
-	console.log('page loaded into window')
 	init();
 })
 
@@ -9,7 +7,6 @@ window.addEventListener('load', (e) => {
 function init() {
 	loadWorkouts();
 	let createWorkoutBtn = document.getElementsByName('createWorkoutBtn')[0];
-	console.log(createWorkoutBtn)
 	createWorkoutBtn.addEventListener('click', createWorkout);
 }
 
@@ -25,7 +22,6 @@ function loadWorkouts() {
 				window.workouts = JSON.parse(xhr.responseText);
 				workoutHeaders();
 				displayWorkouts(JSON.parse(xhr.responseText));
-				console.log(JSON.parse(xhr.responseText));
 			} else {
 				//TODO display an error
 			}
@@ -191,6 +187,7 @@ let updateWorkoutForm = function(e) {
 	form.appendChild(mood);
 	form.appendChild(document.createElement('br'));
 	form.appendChild(notes);
+	form.appendChild(document.createElement('br'));
 	form.appendChild(updateBtn);
 	div.appendChild(form);
 	
@@ -200,8 +197,8 @@ function updateWorkoutFormButton(e){
 	e.preventDefault();
 	let workoutId = +e.target.parentElement.parentElement.parentElement.previousElementSibling.previousElementSibling.textContent;
 	let workout = window.workouts[workoutId - 1];
-	workout.notes = e.target.previousElementSibling.value;
-	workout.mood = e.target.previousElementSibling.previousElementSibling.previousElementSibling.value;
+	workout.notes = e.target.previousElementSibling.previousElementSibling.value;
+	workout.mood = e.target.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.value;
 	updateWorkout(workout, workoutId);
 }
 
@@ -231,7 +228,6 @@ function updateWorkout(workout, workoutId) {
 
 let deleteWorkout = function(e) {
 	e.preventDefault();
-	console.log('in delete function');
 	let workoutId = +e.target.parentElement.parentElement.previousElementSibling.previousElementSibling.textContent;
 	
 	let xhr = new XMLHttpRequest();
@@ -260,14 +256,20 @@ let deleteWorkout = function(e) {
 
 
 let workoutHeaders = function (){
+	let content = document.getElementById('contentHeader');
+	if (content.textContent !== ''){
+		content.textContent = '';
+	}
 	let h2 = document.createElement('h2');
-	h2.textContent = "days since last workout: " + daysSinceLastWorkout();
+	h2.textContent = daysSinceLastWorkout() + " days since last workout";
+	h2.className = "wokroutHeaders";
 	
-	let content = document.getElementById('content');
-	console.log("in workout headers");
-	console.log(content);
-	console.log(h2);
+	let h2_2 = document.createElement('h2');
+	h2_2.textContent = window.workouts.length + " workouts logged ";
+	h2_2.className = "wokroutHeaders";
+	
 	content.appendChild(h2);
+	content.appendChild(h2_2);
 }
 
 let daysSinceLastWorkout = function (){

@@ -51,7 +51,7 @@ class ExerciseTest {
 	@Test
 	void test_MTM_mappings_to_workout() {
 		assertNotNull(exercise);
-		assertNotNull(exercise.getWorkouts());
-		assertTrue(exercise.getWorkouts().size() >= 1);
+		assertNotNull(exercise.getWorkout());
+		assertEquals(exercise.getWorkout().getId(), 1);
 	}
 }

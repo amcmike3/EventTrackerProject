@@ -43,8 +43,8 @@ public class ExerciseServiceImpl implements ExerciseService {
 		if (exercise != null) {
 			Optional<Workout> opt = workRepo.findById(workoutId);
 			if (opt.isPresent()) {
+				exercise.setWorkout(opt.get());
 				ans = exRepo.saveAndFlush(exercise);
-				Workout workout = opt.get();
 			}
 			
 		}

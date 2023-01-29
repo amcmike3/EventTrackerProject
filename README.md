@@ -6,9 +6,9 @@
 
 ## Technologies
 - Java
+- Javascript
 - SQL
 - AWS
-- Javascript
 - TypeScript
 - Angular
 - Spring Data JPA
@@ -41,7 +41,7 @@
 |-----------|----------------------|--------------|---------------|---------|
 | GET       | `http://54.201.168.70:8080/WorkoutTrackerBoot/api/exercises`      |              | Collection all exercises | **List** or **collection** endpoint |
 | GET       | `http://54.201.168.70:8080/WorkoutTrackerBoot/api/exercises/1`   |              | Representation of exercise `1` | **Retrieve** endpoint |
-| POST      | `http://54.201.168.70:8080/WorkoutTrackerBoot/api/exercises`      | Representation of a exercise | Description of the result of the operation | **Create** endpoint |
+| POST      | `http://54.201.168.70:8080/WorkoutTrackerBoot/api/workouts/1/exercises`      | Representation of a exercise | Description of the result of the operation | **Create** endpoint |
 | PUT       | `http://54.201.168.70:8080/WorkoutTrackerBoot/api/exercises`   | Representation of a new version of exercise `1` | | **Replace** endpoint |
 | PATCH     | `Not Allowed`   |  | |  |
 | DELETE    | `Not Allowed`    |              | | |

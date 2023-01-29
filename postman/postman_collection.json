@@ -26,6 +26,30 @@
 			"response": []
 		},
 		{
+			"name": "Get All Workouts deployed",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://54.201.168.70:8080/WorkoutTrackerBoot/api/workouts",
+					"protocol": "http",
+					"host": [
+						"54",
+						"201",
+						"168",
+						"70"
+					],
+					"port": "8080",
+					"path": [
+						"WorkoutTrackerBoot",
+						"api",
+						"workouts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Get One Workout",
 			"request": {
 				"method": "GET",
@@ -132,7 +156,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"mood\": 7,\n    \"notes\": \"good full body workout\"\n}",
+					"raw": "{\n    \"mood\": 7,\n    \"notes\": \"good full body workout\",\n    \"exercises\": []\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -140,7 +164,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8082/api/workouts/2",
+					"raw": "http://localhost:8082/api/workouts/4",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -149,7 +173,7 @@
 					"path": [
 						"api",
 						"workouts",
-						"2"
+						"4"
 					]
 				}
 			},
@@ -292,7 +316,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8082/api/exercises",
+					"raw": "http://localhost:8082/api/workouts/1/exercises",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -300,6 +324,8 @@
 					"port": "8082",
 					"path": [
 						"api",
+						"workouts",
+						"1",
 						"exercises"
 					]
 				}
@@ -321,7 +347,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8082/api/exercises",
+					"raw": "http://localhost:8082/api/workouts/1/exercises",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -329,6 +355,8 @@
 					"port": "8082",
 					"path": [
 						"api",
+						"workouts",
+						"1",
 						"exercises"
 					]
 				}

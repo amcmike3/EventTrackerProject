@@ -1,5 +1,6 @@
 # EventTrackerProject
-- This EventTrackerProject tracks workouts so weight, reps, and sets of exercises can be recorded to track growth. This project features a single HTML page that is dynamically changed via Javascript DOM manipulation. XHR is used to send and receive JSON Objects from RESTful api's which is how the data is populated. The Api's are handle via a Java backend utilizing Spring Boot and JPA. The underlying Database is a MySQL database and communication with the database is handled using Hibernate in conjunction with JPA. Stylings are handled utilizing Bootstrap and CSS.
+## Description
+- This EventTrackerProject tracks workouts so weight, reps, and sets of exercises can be recorded to track growth. This project features a single HTML page that is dynamically changed via Javascript DOM manipulation. XHR is used to send and receive JSON Objects from RESTful api's which is how the data is populated. The Api's are handle via a Java backend utilizing Spring Boot and JPA. The underlying Database is a MySQL database and communication with the database is handled using Hibernate in conjunction with JPA. Stylings are handled utilizing Bootstrap and CSS. With this app there are full CRUD operations on Workouts and partial CRUD on exercises.
 
 ## <a href="http://54.201.168.70:8080/WorkoutTrackerBoot/">Active Deployed Server Link<a/>
 
@@ -23,6 +24,8 @@
 - CSS
 - Hibernate
 - JPA
+- JUnit
+- TDD
 
 ## <a href="https://github.com/amcmike3/EventTrackerProject/blob/main/postman/postman_collection.json"> Postman Collection Link<a/>
 - Importable postman collection at link above for a local instances only
@@ -50,3 +53,11 @@
 
 ## Database Schema
 ![](https://github.com/amcmike3/EventTrackerProject/blob/main/images/Screen%20Shot%202023-01-28%20at%205.23.55%20PM.png)
+
+## Future implementations:
+- Add the ability to update and delete Exercises.
+- create a nav bar with several options to create workouts, search for workouts, and show a limited view of workouts.
+
+## Limitations:
+- Each exercise is its own entity in the DB. It would be better to be able to reference the same exercises in multiple workouts but due to limitations on Many To Many relationships from JPA there is not an elegant way to accomplish this.
+- Every time page is loaded all the workouts stored in the db are loaded. This will not be optimal as the size of the DB grows.

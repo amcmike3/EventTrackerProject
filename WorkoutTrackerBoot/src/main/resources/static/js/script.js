@@ -40,14 +40,15 @@ function displayWorkouts(workoutList) {
 	let contentDiv = document.getElementById('content');
 	contentDiv.textContent = "";
 	let label = document.createElement('label');
-	label.style.color = "white";
 	label.style.fontSize = "50px"
 	label.textContent = "Workouts";
+	label.className = "workoutHeader";
 	contentDiv.appendChild(label);
 	label.for = "contentTable";
 	let table = document.createElement('table');
 	table.name = "contentTable"
 	table.style.border = "solid";
+	table.className = "workoutHeader";
 	let head = document.createElement('thead');
 
 	table.appendChild(head);

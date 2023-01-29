@@ -1,8 +1,20 @@
 body {
 	background-image:
-		url("https://github.com/amcmike3/EventTrackerProject/blob/main/images/edgar-chaparro-sHfo3WOgGTU-unsplash.jpg");
+		url("/images/3d-rendering-black-dumbbells-floor-dark-concept-fitness-room-with-training-equipments-back_67155-14961.jpeg");
+	background-color: #cccccc;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-size: 100% 100%;
 	margin: 0;
+}
+
+.opaque {
+	background-color: rgba(236,240,234,.3);
+}
+.workoutHeader {
+	color: #f3c400;
+}
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: black;
+  opacity: 1; /* Firefox */
 }

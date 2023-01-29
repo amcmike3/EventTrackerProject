@@ -1,5 +1,5 @@
 # EventTrackerProject
-- This EventTrackerProject tracks workouts so weight, reps, and sets of exercises can be recorded to track growth.
+- This EventTrackerProject tracks workouts so weight, reps, and sets of exercises can be recorded to track growth. This project features a single HTML page that is manipulated via Javascript DOM manipulation. XHR is used to send and receive JSON Objects from RESTful api's. The Api's are handle via a Java backend utilizing Spring Boot Controllers, Services, and repositories.  
 
 ## <a href="http://54.201.168.70:8080/WorkoutTrackerBoot/">Active Deployed Server Link<a/>
 

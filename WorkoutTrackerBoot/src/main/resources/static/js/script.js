@@ -273,9 +273,14 @@ let workoutHeaders = function (){
 }
 
 let daysSinceLastWorkout = function (){
-	let lastWorkout = new Date(window.workouts[window.workouts.length - 1].date);
+	let lastWorkout;
 	let today = new Date();
-
+	for (let i = window.workouts.length - 1; i > 0; i-- ){
+		if (window.workouts[i].enabled){
+			lastWorkout = new Date(window.workouts[i].date);
+			break;
+		}
+	}
 	
 	timeDifference = today.getTime() - lastWorkout.getTime();
 	

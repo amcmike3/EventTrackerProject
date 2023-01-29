@@ -1,4 +1,8 @@
 body {
-	background-color: "red";
+	background-image:
+		url("https://github.com/amcmike3/EventTrackerProject/blob/main/images/edgar-chaparro-sHfo3WOgGTU-unsplash.jpg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: 100% 100%;
+	margin: 0;
 }
-	 

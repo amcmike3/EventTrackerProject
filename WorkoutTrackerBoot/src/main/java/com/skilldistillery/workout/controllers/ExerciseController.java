@@ -45,9 +45,7 @@ public class ExerciseController {
 	public Exercise createExercise(@RequestBody Exercise exercise, @PathVariable Integer id, HttpServletResponse resp) {
 		Exercise ans = null;
 		if (exercise.getName() != null) {
-			ans = exServ.createExercise(exercise);
-			Workout workout = workServ.getWorkout(id);
-			workout.addExercise(ans);
+			ans = exServ.createExercise(exercise, id);
 			resp.setStatus(201);
 		} else {
 			resp.setStatus(400);

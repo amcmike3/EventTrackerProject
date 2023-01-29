@@ -46,38 +46,17 @@ CREATE TABLE IF NOT EXISTS `exercise` (
   `weight` INT NULL,
   `reps` INT NULL,
   `sets` INT NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
-
-SHOW WARNINGS;
-
--- -----------------------------------------------------
--- Table `workout_has_exercise`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `workout_has_exercise` ;
-
-SHOW WARNINGS;
-CREATE TABLE IF NOT EXISTS `workout_has_exercise` (
   `workout_id` INT NOT NULL,
-  `exercise_id` INT NOT NULL,
-  PRIMARY KEY (`workout_id`, `exercise_id`),
-  CONSTRAINT `fk_workout_has_exercise_workout`
+  PRIMARY KEY (`id`, `workout_id`),
+  CONSTRAINT `fk_exercise_workout`
     FOREIGN KEY (`workout_id`)
     REFERENCES `workout` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_workout_has_exercise_exercise1`
-    FOREIGN KEY (`exercise_id`)
-    REFERENCES `exercise` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 SHOW WARNINGS;
-CREATE INDEX `fk_workout_has_exercise_exercise1_idx` ON `workout_has_exercise` (`exercise_id` ASC);
-
-SHOW WARNINGS;
-CREATE INDEX `fk_workout_has_exercise_workout_idx` ON `workout_has_exercise` (`workout_id` ASC);
+CREATE INDEX `fk_exercise_workout_idx` ON `exercise` (`workout_id` ASC);
 
 SHOW WARNINGS;
 SET SQL_MODE = '';
@@ -106,27 +85,15 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `workoutdb`;
-INSERT INTO `exercise` (`id`, `name`, `description`, `weight`, `reps`, `sets`) VALUES (1, 'bench press', 'weighted barbell inverse prone ', 165, 10, 3);
-INSERT INTO `exercise` (`id`, `name`, `description`, `weight`, `reps`, `sets`) VALUES (2, 'leg press', 'prone machine', 45, 10, 3);
-INSERT INTO `exercise` (`id`, `name`, `description`, `weight`, `reps`, `sets`) VALUES (3, 'weighted pull-up', 'pull up with weight', 25, 10, 3);
-
-COMMIT;
-
-
--- -----------------------------------------------------
--- Data for table `workout_has_exercise`
--- -----------------------------------------------------
-START TRANSACTION;
-USE `workoutdb`;
-INSERT INTO `workout_has_exercise` (`workout_id`, `exercise_id`) VALUES (1, 3);
-INSERT INTO `workout_has_exercise` (`workout_id`, `exercise_id`) VALUES (1, 2);
-INSERT INTO `workout_has_exercise` (`workout_id`, `exercise_id`) VALUES (1, 1);
-INSERT INTO `workout_has_exercise` (`workout_id`, `exercise_id`) VALUES (2, 3);
-INSERT INTO `workout_has_exercise` (`workout_id`, `exercise_id`) VALUES (2, 2);
-INSERT INTO `workout_has_exercise` (`workout_id`, `exercise_id`) VALUES (2, 1);
-INSERT INTO `workout_has_exercise` (`workout_id`, `exercise_id`) VALUES (3, 3);
-INSERT INTO `workout_has_exercise` (`workout_id`, `exercise_id`) VALUES (3, 2);
-INSERT INTO `workout_has_exercise` (`workout_id`, `exercise_id`) VALUES (3, 1);
+INSERT INTO `exercise` (`id`, `name`, `description`, `weight`, `reps`, `sets`, `workout_id`) VALUES (1, 'bench press', 'weighted barbell inverse prone ', 165, 10, 3, 1);
+INSERT INTO `exercise` (`id`, `name`, `description`, `weight`, `reps`, `sets`, `workout_id`) VALUES (2, 'leg press', 'prone machine', 45, 10, 3, 1);
+INSERT INTO `exercise` (`id`, `name`, `description`, `weight`, `reps`, `sets`, `workout_id`) VALUES (3, 'weighted pull-up', 'pull up with weight', 25, 10, 3, 1);
+INSERT INTO `exercise` (`id`, `name`, `description`, `weight`, `reps`, `sets`, `workout_id`) VALUES (4, 'bench press', 'weighted barbell inverse prone ', 165, 10, 3, 2);
+INSERT INTO `exercise` (`id`, `name`, `description`, `weight`, `reps`, `sets`, `workout_id`) VALUES (5, 'leg press', 'prone machine', 45, 10, 3, 2);
+INSERT INTO `exercise` (`id`, `name`, `description`, `weight`, `reps`, `sets`, `workout_id`) VALUES (6, 'weighted pull-up', 'pull up with weight', 25, 10, 3, 2);
+INSERT INTO `exercise` (`id`, `name`, `description`, `weight`, `reps`, `sets`, `workout_id`) VALUES (7, 'bench press', 'weighted barbell inverse prone ', 165, 10, 3, 3);
+INSERT INTO `exercise` (`id`, `name`, `description`, `weight`, `reps`, `sets`, `workout_id`) VALUES (8, 'leg press', 'prone machine', 45, 10, 3, 3);
+INSERT INTO `exercise` (`id`, `name`, `description`, `weight`, `reps`, `sets`, `workout_id`) VALUES (9, 'weighted pull-up', 'pull up with weight', 25, 10, 3, 3);
 
 COMMIT;
 

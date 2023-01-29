@@ -8,7 +8,7 @@ public interface ExerciseService {
 	
 	List<Exercise> allExercises();
 	Exercise getExercise(int id);
-	Exercise createExercise(Exercise exercise);
+	Exercise createExercise(Exercise exercise, Integer workoutId);
 	Exercise updateExercise(int id, Exercise exercise);
 	boolean deleteExerciseById(int id);
 

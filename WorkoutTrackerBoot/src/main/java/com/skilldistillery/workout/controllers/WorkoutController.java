@@ -30,6 +30,7 @@ public class WorkoutController {
 		List<Workout> workouts = workServ.allWorkouts();
 		for (Workout workout : workouts) {
 			workout.getExercises().size();
+			System.out.println(workout.getExercises());
 		}
 		return workouts;
 	}

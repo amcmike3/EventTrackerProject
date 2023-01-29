@@ -8,7 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -27,32 +28,18 @@ public class Exercise {
 	private Integer sets;
 	
 	@JsonIgnore
-	@ManyToMany(mappedBy = "exercises")
-	private List<Workout> workouts;
+	@ManyToOne
+	@JoinColumn(name="workout_id")
+	private Workout workout;
 
-	public List<Workout> getWorkouts() {
-		return workouts;
+	public Exercise() {}
+
+	public Workout getWorkout() {
+		return workout;
 	}
 
-	public void setWorkouts(List<Workout> workouts) {
-		this.workouts = workouts;
-	}
-	
-	public void addWorkout(Workout workout) {
-		if(workouts == null) {
-			workouts = new ArrayList<>();
-		}
-		if (! workouts.contains(workout)) {
-			workouts.add(workout);
-			workout.addExercise(this);
-		}
-	}
-	
-	public void removeWorkout(Workout workout) {
-		if (workouts != null && workouts.contains(workout)) {
-			workouts.remove(workout);
-			workout.removeExercise(this);
-		}
+	public void setWorkout(Workout workout) {
+		this.workout = workout;
 	}
 
 	public int getId() {

@@ -1,5 +1,6 @@
 package com.skilldistillery.workout.services;
 
+
 import java.util.List;
 import java.util.Optional;
 
@@ -7,13 +8,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.workout.entities.Exercise;
+import com.skilldistillery.workout.entities.Workout;
 import com.skilldistillery.workout.repositories.ExerciseRepository;
+import com.skilldistillery.workout.repositories.WorkoutRepository;
 
 @Service
 public class ExerciseServiceImpl implements ExerciseService {
 	
 	@Autowired
 	private ExerciseRepository exRepo;
+	
+	@Autowired 
+	private WorkoutRepository workRepo;
+	
 
 	@Override
 	public List<Exercise> allExercises() {
@@ -31,10 +38,15 @@ public class ExerciseServiceImpl implements ExerciseService {
 	}
 
 	@Override
-	public Exercise createExercise(Exercise exercise) {
+	public Exercise createExercise(Exercise exercise, Integer workoutId) {
 		Exercise ans = null;
 		if (exercise != null) {
-			ans = exRepo.saveAndFlush(exercise);
+			Optional<Workout> opt = workRepo.findById(workoutId);
+			if (opt.isPresent()) {
+				ans = exRepo.saveAndFlush(exercise);
+				Workout workout = opt.get();
+			}
+			
 		}
 		return ans;
 	}

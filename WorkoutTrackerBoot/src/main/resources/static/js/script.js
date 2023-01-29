@@ -25,6 +25,7 @@ function loadWorkouts() {
 				window.workouts = JSON.parse(xhr.responseText);
 				workoutHeaders();
 				displayWorkouts(JSON.parse(xhr.responseText));
+				console.log(JSON.parse(xhr.responseText));
 			} else {
 				//TODO display an error
 			}
@@ -356,7 +357,6 @@ function createExercise(e){
 		 if (xhr.readyState === 4){
 			 if (xhr.status === 201){
 				 loadWorkouts();
-				 displayDetails(e.target.parentElement.parentElement.parentElement.nextElementSibling)
 			 } else {
 				 let fail = document.createElement('div');
 				fail.textContent = "Failed to create Exercise";

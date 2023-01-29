@@ -9,9 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Workout {
@@ -21,25 +19,20 @@ public class Workout {
 	private int id;
 
 	private LocalDateTime date;
-	
-	private Integer mood;
-	
-	private String notes;
-	
-	private boolean enabled;
-	
-	
 
-	@ManyToMany
-	@JoinTable(name = "workout_has_exercise", 
-	joinColumns = @JoinColumn(name = "exercise_id"), 
-	inverseJoinColumns = @JoinColumn(name = "workout_id"))
+	private Integer mood;
+
+	private String notes;
+
+	private boolean enabled;
+
+	@OneToMany(mappedBy = "workout")
 	private List<Exercise> exercises;
 
 	public Workout() {
 		date = LocalDateTime.now();
 		enabled = true;
-		
+
 	}
 
 	public List<Exercise> getExercises() {
@@ -51,19 +44,20 @@ public class Workout {
 	}
 
 	public void addExercise(Exercise exercise) {
-		if(exercises == null) {
+		if (exercises == null) {
 			exercises = new ArrayList<>();
 		}
-		if (! exercises.contains(exercise)) {
+		if (!exercises.contains(exercise)) {
 			exercises.add(exercise);
-			exercise.addWorkout(this);
+			exercise.getWorkout().removeExercise(exercise);
 		}
+		exercise.setWorkout(this);
 	}
-	
+
 	public void removeExercise(Exercise exercise) {
 		if (exercises != null && exercises.contains(exercise)) {
 			exercises.remove(exercise);
-			exercise.removeWorkout(this);
+			exercise.setWorkout(null);
 		}
 	}
 
@@ -120,7 +114,7 @@ public class Workout {
 	public void setNotes(String notes) {
 		this.notes = notes;
 	}
-	
+
 	public boolean isEnabled() {
 		return enabled;
 	}

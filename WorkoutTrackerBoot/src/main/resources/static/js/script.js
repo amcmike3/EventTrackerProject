@@ -20,6 +20,7 @@ function loadWorkouts() {
 		if (xhr.readyState === 4) {
 			if (xhr.status === 200) {
 				window.workouts = JSON.parse(xhr.responseText);
+				setInterval(slidingBackgounds, 5000);
 				workoutHeaders();
 				displayWorkouts(JSON.parse(xhr.responseText));
 			} else {
@@ -262,11 +263,16 @@ let workoutHeaders = function (){
 	}
 	let h2 = document.createElement('h2');
 	h2.textContent = daysSinceLastWorkout() + " days since last workout";
-	h2.className = "wokroutHeaders";
-	
+	h2.className = "workoutHeader";
+	count = 0;
+	for (let i = window.workouts.length - 1; i > 0; i-- ){
+		if (window.workouts[i].enabled){
+			count++;
+		}
+	}
 	let h2_2 = document.createElement('h2');
-	h2_2.textContent = window.workouts.length + " workouts logged ";
-	h2_2.className = "wokroutHeaders";
+	h2_2.textContent = ++count + " workouts logged ";
+	h2_2.className = "workoutHeader";
 	
 	content.appendChild(h2);
 	content.appendChild(h2_2);
@@ -380,4 +386,19 @@ function createExercise(e){
  	xhr.send(JSON.stringify(workout));
 }
 
+var current = 0;
+let backgrounds = ['url(/images/edgar-chaparro-sHfo3WOgGTU-unsplash.jpg)',
+	'url(/images/3d-rendering-black-dumbbells-floor-dark-concept-fitness-room-with-training-equipments-back_67155-14961.jpeg)',
+	'url(/images/karsten-winegeart-0Wra5YYVQJE-unsplash.jpg)', 
+	'url(/images/pawel-czerwinski-6lQDFGOB1iw-unsplash.jpg)',
+	'url(/images/risen-wang-20jX9b35r_M-unsplash.jpg)',
+	'url(/images/sushil-ghimire-5UbIqV58CW8-unsplash.jpg)',
+	'url(/images/william-daigneault-olVJDJYKPSI-unsplash.jpg)',
+	];
+	
+function slidingBackgounds(){
+	let body  = document.getElementById('mainBody');
+	current = ++current % backgrounds.length;
+	body.style.backgroundImage = backgrounds[current];
+}
 

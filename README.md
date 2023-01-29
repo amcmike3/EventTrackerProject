@@ -47,4 +47,4 @@
 | DELETE    | `Not Allowed`    |              | | |
 
 ## Database Schema
-![](https://github.com/amcmike3/EventTrackerProject/blob/main/Screen%20Shot%202023-01-23%20at%208.20.34%20AM.png)
+![](https://github.com/amcmike3/EventTrackerProject/blob/main/Screen%20Shot%202023-01-28%20at%205.23.55%20PM.png)

@@ -11,10 +11,12 @@ body {
 .opaque {
 	background-color: rgba(236,240,234,.3);
 }
+
 .workoutHeader {
 	color: #f3c400;
 }
-::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+
+::placeholder { 
   color: black;
-  opacity: 1; /* Firefox */
+  opacity: 1; 
 }

@@ -264,6 +264,9 @@ let workoutHeaders = function (){
 	h2.textContent = "days since last workout: " + daysSinceLastWorkout();
 	
 	let content = document.getElementById('content');
+	console.log("in workout headers");
+	console.log(content);
+	console.log(h2);
 	content.appendChild(h2);
 }
 

@@ -73,9 +73,9 @@ SHOW WARNINGS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `workoutdb`;
-INSERT INTO `workout` (`id`, `date`, `mood`, `notes`, `enabled`) VALUES (1, '1000-01-01', 3, 'great workout but felt lethargic', 1);
-INSERT INTO `workout` (`id`, `date`, `mood`, `notes`, `enabled`) VALUES (2, '1000-01-12', 5, 'just another day', 1);
-INSERT INTO `workout` (`id`, `date`, `mood`, `notes`, `enabled`) VALUES (3, '1000-01-04', 10, 'totally pumped today', 1);
+INSERT INTO `workout` (`id`, `date`, `mood`, `notes`, `enabled`) VALUES (1, '2022-12-01', 3, 'great workout but felt lethargic', 1);
+INSERT INTO `workout` (`id`, `date`, `mood`, `notes`, `enabled`) VALUES (2, '2023-01-12', 5, 'just another day', 1);
+INSERT INTO `workout` (`id`, `date`, `mood`, `notes`, `enabled`) VALUES (3, '2023-01-14', 10, 'totally pumped today', 1);
 
 COMMIT;
 

@@ -14,7 +14,7 @@ function init() {
 function loadWorkouts() {
 	let xhr = new XMLHttpRequest();
 
-	xhr.open('GET', "http://localhost:8082/api/workouts")
+	xhr.open('GET', "api/workouts")
 
 	xhr.onreadystatechange = function() {
 		if (xhr.readyState === 4) {

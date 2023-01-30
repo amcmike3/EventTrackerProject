@@ -57,6 +57,7 @@
 ## Future implementations:
 - Add the ability to update and delete Exercises.
 - create a nav bar with several options to create workouts, search for workouts, and show a limited view of workouts.
+- add more stylings with pretty graphics.
 
 ## Limitations:
 - Each exercise is its own entity in the DB. It would be better to be able to reference the same exercises in multiple workouts but due to limitations on Many To Many relationships from JPA there is not an elegant way to accomplish this.

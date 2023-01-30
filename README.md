@@ -6,11 +6,11 @@
 
 
 ## Technologies
-- Java
+- Java |
 - Javascript
-- SQL
+- SQL |
 - AWS
-- TypeScript
+- TypeScript |
 - Angular
 - Spring Data JPA
 - Spring Boot

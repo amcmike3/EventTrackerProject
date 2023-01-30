@@ -6,6 +6,7 @@
 
 
 ## Technologies
+|-----------|----------------------|-------------
 | Java | Javascript | SQL |
 | AWS | TypeScript | Angular |
 - Spring Data JPA

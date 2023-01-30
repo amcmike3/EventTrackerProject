@@ -6,12 +6,8 @@
 
 
 ## Technologies
-- Java 
-- Javascript
-- SQL
-- AWS
-- TypeScript
-- Angular
+- Java | Javascript | SQL
+- AWS | TypeScript | Angular
 - Spring Data JPA
 - Spring Boot
 - DOM

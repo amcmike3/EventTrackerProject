@@ -20,7 +20,7 @@ function loadWorkouts() {
 		if (xhr.readyState === 4) {
 			if (xhr.status === 200) {
 				window.workouts = JSON.parse(xhr.responseText);
-				setInterval(slidingBackgounds, 5000);
+				setInterval(slidingBackgounds, 10000);
 				workoutHeaders();
 				displayWorkouts(JSON.parse(xhr.responseText));
 			} else {
@@ -387,13 +387,13 @@ function createExercise(e){
 }
 
 var current = 0;
-let backgrounds = ['url(/images/edgar-chaparro-sHfo3WOgGTU-unsplash.jpg)',
-	'url(/images/3d-rendering-black-dumbbells-floor-dark-concept-fitness-room-with-training-equipments-back_67155-14961.jpeg)',
-	'url(/images/karsten-winegeart-0Wra5YYVQJE-unsplash.jpg)', 
-	'url(/images/pawel-czerwinski-6lQDFGOB1iw-unsplash.jpg)',
-	'url(/images/risen-wang-20jX9b35r_M-unsplash.jpg)',
-	'url(/images/sushil-ghimire-5UbIqV58CW8-unsplash.jpg)',
-	'url(/images/william-daigneault-olVJDJYKPSI-unsplash.jpg)',
+let backgrounds = [
+	'url(https://img.freepik.com/free-photo/exercise-weights-iron-dumbbell-with-extra-plates_1423-223.jpg?w=900&t=st=1675093566~exp=1675094166~hmac=4b6cc51dd640738a0b8d4cdb6a6fc8b19f92427e597739d72e4d30ee973ba9e4)',
+	'url(https://img.freepik.com/premium-photo/sport-equipments-kettlebell-towels-bottle-water-empty-space-gym-floor_67155-25106.jpg?w=900)', 
+	'url(https://img.freepik.com/free-photo/young-fitness-man-studio_7502-5008.jpg?w=900&t=st=1675093630~exp=1675094230~hmac=f6bf44c11ad43fcdb15ea26488cb57665b73decb983367bb9befe408f1bc5dc7)',
+	'url(https://images.unsplash.com/photo-1542684377-0b875fde9563?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=359&q=80)',
+	'url(https://images.unsplash.com/photo-1542924597-e73e0e35c010?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=372&q=80)',
+	'url(https://images.unsplash.com/photo-1544631008-534b4b6c1215?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=353&q=80)',
 	];
 	
 function slidingBackgounds(){

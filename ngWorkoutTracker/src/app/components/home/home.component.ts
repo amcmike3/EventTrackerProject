@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
     this.workoutService.index().subscribe({
       next: (data) => {
         this.workouts = this.removedPipe.transform(data);
-        this.lastWorkout = this.workouts[this.workouts.length - 1].date
+        this.lastWorkout = this.workouts[0].date
       },
       error: (err) => {
         console.log(

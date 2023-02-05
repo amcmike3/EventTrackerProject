@@ -58,10 +58,28 @@ export class QuoteComponent {
     '“You’re going to have to let it hurt. Let it suck. The harder you work, the better you will look. Your appearance isn’t parallel to how heavy you lift, it’s parallel to how hard you work.”',
     '“Don’t limit your challenges. Challenge your limits.”',
     '“Believe in yourself and all that you are. Know that there is something inside of you that is greater than any obstacle.”',
+    '"Be like Nike, Just Do It"',
+    '“All progress takes place outside the comfort zone.”',
+    '“You may not be there yet, but you are closer than you were yesterday”',
+    '“The pain you feel today, will be the strength you feel tomorrow.”',
+    '“A little progress each day adds up to big results”',
+    '“When you feel like quitting, think about why you started.”',
+    '“A one hour workout is only 4% of your day. No excuses.”',
+    '“Your success is found in your daily routine.”',
+    '“You are one workout away from a better mood”',
+    '“The best investment you make is your own health.”',
+    '“Three months from now, you will thank yourself”',
+    '“Take care of your body, it’s the only place you have to live”',
+    '“Once you see results, it becomes an addiction”',
+    '“Don’t give up because you had a bad day. Forgive yourself and do better tomorrow.”',
+    '“You have to think it before you can do it. The mind is what makes it all possible.”',
+    '“Eat good. Feel good.”',
+    '“Eating well is a form of self respect.” ',
+    '"Tomorrow you will wish you had started today.”',
   ];
 
   ngOnInit(){
-    this.subscription = interval(10000).subscribe( () => {
+    this.subscription = interval(13000).subscribe( () => {
       let index = Math.floor((Math.random() * this.quotes.length))
       this.quote = this.quotes[index];
     })

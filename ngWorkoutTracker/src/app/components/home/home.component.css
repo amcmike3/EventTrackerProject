@@ -20,6 +20,9 @@
 .table-dark > tbody > tr > td{
   color: rgb(201, 177, 39);
 }
+table tr td, table tr th{
+  background-color:rgb(96, 132, 163, .3 ) !important;
+}
 label {
   color: rgb(201, 177, 39, .5);
 }

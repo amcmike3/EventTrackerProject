@@ -73,8 +73,12 @@ public class ExerciseServiceImpl implements ExerciseService {
 
 	@Override
 	public boolean deleteExerciseById(int id) {
-		exRepo.deleteById(id);
-		return exRepo.findById(id).isPresent();
+		boolean ans = false;
+		if (exRepo.findById(id).isPresent()) {
+			exRepo.deleteById(id);			
+			ans = !exRepo.findById(id).isPresent();
+		}
+		return ans;
 	}
 
 }

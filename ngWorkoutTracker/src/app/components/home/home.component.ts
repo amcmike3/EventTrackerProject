@@ -161,9 +161,9 @@ export class HomeComponent implements OnInit {
     this.exerciseService.create(exercise, workoutId).subscribe({
       next : (data) => {
         this.newExerciseForm = false;
-        this.selected?.exercises.push(data);
         this.newExercise = new Exercise();
         this.reload();
+        this.refreshExercises(workoutId);
       },
       error: (err) => {
         console.log(
@@ -175,10 +175,11 @@ export class HomeComponent implements OnInit {
 
   }
 
-  deleteExercise(id : number) {
+  deleteExercise(id : number, selected: Workout) {
     this.exerciseService.destroy(id).subscribe({
       next: (data) => {
         this.reload();
+        this.refreshExercises(selected.id);
       },
       error: (err) => {
         console.log(
@@ -189,6 +190,18 @@ export class HomeComponent implements OnInit {
     });
   }
 
-
+  refreshExercises(workoutId : number){
+    this.workoutService.show(workoutId).subscribe({
+      next: (data) => {
+        this.selected = data;
+      },
+      error: (err) => {
+        console.log(
+          'HomeCompenent.refreshExercise(): Error refreshing Exercise'
+        );
+        console.log(err);
+      }
+    })
+  }
 
 }

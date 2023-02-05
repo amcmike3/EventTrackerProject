@@ -19,7 +19,7 @@ export class ExerciseService {
         console.log(err);
         return throwError(
           () =>
-            new Error('TodoService.index(): error creating Todo item: ' + err)
+            new Error('ExerciseService.create(): error creating Exercise: ' + err)
         );
       })
     );
@@ -31,7 +31,7 @@ export class ExerciseService {
         console.log(err);
         return throwError(
           () =>
-            new Error('TodoService.update(): error updating exercise item: ' + err)
+            new Error('ExerciseService.update(): error updating exercise: ' + err)
         );
       })
     );
@@ -46,7 +46,7 @@ export class ExerciseService {
           return throwError(
             () =>
               new Error(
-                'TodoService.update(): error updating exercise item: ' + err
+                'ExerciseService.destroy(): error deleting exercise: ' + err
               )
           );
         })

@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -69,7 +70,18 @@ public class ExerciseController {
 		return ans;
 	}
 	
-//	@DeleteMapping("exercises/{id}")
+	@DeleteMapping("exercises/{id}")
+	public void deleteExercise(@PathVariable Integer id, HttpServletResponse resp) {
+		try {
+			boolean deleted = exServ.deleteExerciseById(id);
+			if (!deleted) {
+				resp.setStatus(404);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			resp.setStatus(400);
+		}
+	}
 //	delete exercise is not allowed.
 	
 

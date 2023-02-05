@@ -11,6 +11,7 @@ import { RemovedPipe } from './pipes/removed.pipe';
 import { ExerciseRemovedPipe } from './pipes/exercise-removed.pipe';
 import { CounterComponent } from './components/counter/counter.component';
 import { ExerciseComponent } from './components/exercise/exercise.component';
+import { QuoteComponent } from './components/quote/quote.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { ExerciseComponent } from './components/exercise/exercise.component';
     ExerciseRemovedPipe,
     CounterComponent,
     ExerciseComponent,
+    QuoteComponent,
   ],
   imports: [
     BrowserModule,

@@ -9,7 +9,7 @@ export class ExerciseRemovedPipe implements PipeTransform {
   transform(exercises: Exercise[]): Exercise[] {
     let ans : Exercise[] = []
     for (let exercise of exercises){
-      if (exercise.enabeled){
+      if (exercise.enabled){
         ans.push(exercise)
       }
     }

@@ -1,3 +1,4 @@
+import { ExerciseService } from './../../services/exercise.service';
 import { Exercise } from './../../models/exercise';
 import { RemovedPipe } from './../../pipes/removed.pipe';
 import { Workout } from './../../models/workout';
@@ -17,7 +18,7 @@ export class HomeComponent implements OnInit {
   editExercise : Exercise | null = null;
   selected : null | Workout = null;
   daysSinceLastWorkout = 0;
-  constructor(private workoutService: WorkoutService, private removedPipe : RemovedPipe) {}
+  constructor(private workoutService: WorkoutService, private removedPipe : RemovedPipe, private exerciseService : ExerciseService) {}
 
   ngOnInit() {
     this.reload();
@@ -131,11 +132,21 @@ export class HomeComponent implements OnInit {
     this.editExercise = null;
   }
   updateExercise(exercise : Exercise){
-
+    this.exerciseService.update(exercise).subscribe({
+      next: (data) => {
+        this.reload();
+        this.editExercise = null;
+      },
+      error: (err) =>{
+        console.log(
+          'HomeCompenent.updateTodo(): Error updating todo'
+        );
+      }
+    })
   }
   exerciseExists() : boolean{
     let ans = false;
-    if (this.selected?.exercises != undefined){
+    if (this.selected?.exercises != undefined && this.selected?.exercises[0]){
       ans = true;
     }
     return ans;

@@ -99,7 +99,9 @@
         </tr>
       </tbody>
     </table>
-    <h2 *ngIf="exerciseExists()">Exercises:</h2>
+    <h2 *ngIf="!exerciseExists()">No Exercises Associated With This Workout</h2>
+    <div *ngIf="exerciseExists()">
+    <h2 >Exercises:</h2>
     <table
       class="table table-striped table-dark table-hover"
       *ngIf="!editExercise"
@@ -128,6 +130,7 @@
         </tr>
       </tbody>
     </table>
+  </div>
     <form
       class="table table-striped table-hover"
       name="editTodoForm"

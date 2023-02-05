@@ -5,7 +5,7 @@ export class Exercise {
   weight: number;
   reps: number;
   sets: number;
-  enabeled: boolean;
+  enabled: boolean;
 
   constructor(
     id: number = 0,
@@ -14,7 +14,7 @@ export class Exercise {
     weight: number = 0,
     reps: number = 0,
     sets: number = 0,
-    enabeled: boolean = true
+    enabled: boolean = true
   ) {
     this.id = id;
     this.name = name;
@@ -22,6 +22,6 @@ export class Exercise {
     this.weight = weight;
     this.reps = reps;
     this.sets = sets;
-    this.enabeled = enabeled;
+    this.enabled = enabled;
   }
 }

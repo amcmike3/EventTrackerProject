@@ -1,6 +1,9 @@
 # EventTrackerProject
 ## Description
-- This EventTrackerProject tracks workouts so weight, reps, and sets of exercises can be recorded to track growth. <strong><em> This project features a single HTML page that is dynamically changed via Javascript DOM manipulation. </em> </strong> XHR is used to send and receive JSON Objects from RESTful api's which is how the data is populated. The Api's are handled via a Java backend utilizing Spring Boot and JPA. The underlying Database is a MySQL database and communication with the database is handled using Hibernate in conjunction with JPA. Stylings are handled utilizing Bootstrap and CSS. With this app there are full CRUD operations on Workouts and partial CRUD on exercises.
+- This EventTrackerProject tracks workouts so weight, reps, and sets of exercises can be recorded to track growth. <strong><em> This project started out as a single HTML page that was dynamically changed via Javascript DOM manipulation and XHR to send and receive JSON Objects from RESTful api's. </em> </strong> Over the course of this project the decision was made to change the front end to angular. This entire website is still a single page application but the data manipulation is accomplished through data-binding. A great deal of logic was offloaded by using Angular native  The Api's are handled via a Java backend utilizing Spring Boot and JPA. The underlying Database is a MySQL database and communication with the database is handled using Hibernate in conjunction with JPA. Stylings are handled utilizing Bootstrap and CSS. With this app there are full CRUD operations on Workouts and partial CRUD on exercises.
+
+## Background
+- 
 
 ## <a href="http://54.201.168.70:8080/WorkoutTrackerBoot/">Active Deployed Server Link<a/>
 
@@ -8,9 +11,10 @@
 ## Technologies
 - Java 
 - Javascript
-- SQL
-- AWS
 - TypeScript
+- SQL
+- JPQL
+- AWS
 - Angular
 - Spring Data JPA
 - Spring Boot

@@ -1,5 +1,7 @@
 # EventTrackerProject
 
+## <a href="http://54.201.168.70:8080/WorkoutTrackerBoot/">Active Deployed Server Link<a/>
+
 ## Description
 
 ### Front-End
@@ -14,7 +16,7 @@
 
 - The Api's are handled via a Java backend utilizing Spring Boot and JPA. The underlying Database is a MySQL database and communication with the database is handled using Hibernate in conjunction with JPA. With this app there are full CRUD operations on on two database tables representing Workouts and exercises.
 
-## <a href="http://54.201.168.70:8080/WorkoutTrackerBoot/">Active Deployed Server Link<a/>
+
 
 ## Technologies
 |||

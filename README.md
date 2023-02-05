@@ -20,12 +20,12 @@
 
 <table>
     <tr>
-        <td>- Java </td>
-        <td>- Javascript</td>
+        <td> - Java </td>
+        <td> - Javascript</td>
     </tr>
     <tr>
-        <td>- TypeScript</td>
-        <td>- SQL</td>
+        <td> - TypeScript</td>
+        <td> - SQL</td>
     </tr>
     <tr>
         <td></td>

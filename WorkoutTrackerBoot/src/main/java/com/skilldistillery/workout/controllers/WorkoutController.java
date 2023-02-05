@@ -4,8 +4,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
-import org.aspectj.lang.annotation.DeclareMixin;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +19,7 @@ import com.skilldistillery.workout.entities.Workout;
 import com.skilldistillery.workout.services.WorkoutService;
 
 @RestController
+@CrossOrigin({ "*", "http://localhost/" })
 @RequestMapping("api")
 public class WorkoutController {
 

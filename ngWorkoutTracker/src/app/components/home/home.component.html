@@ -1,0 +1,149 @@
+<h1 >
+  Workout Tracker
+</h1>
+  <br>
+  <h3>
+    <span [ngClass]="daysSinceWorkoutClass()"> Days Since Last Workout {{daysSinceWorkout()}}</span>
+  </h3>
+Show Completed Tasks:
+<br>
+<table class="table table-striped table-hover" *ngIf="!selected">
+  <thead class="table-dark">
+    <tr>
+      <td>id</td>
+      <td>date</td>
+      <td>notes</td>
+      <td>mood</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of workouts | removed" (click)="displayWorkout(item)">
+      <td>{{ item.id }}</td>
+      <td>{{ item.date }}</td>
+      <td>{{item.notes}}</td>
+      <td>{{ item.mood }}</td>
+      <td>
+        <button class="btn btn-outline-danger" (click)="deleteWorkout(item.id)">
+          X
+        </button>
+        <ul *ngFor="let workout of workouts">
+          <li>{{workout.date}}</li>
+          <li>{{workout.mood}}</li>
+          <li>{{workout.notes}}</li>
+          <li>{{workout.id}}</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<form
+  class="table table-striped table-hover"
+  name="newTodoForm"
+  *ngIf="!selected"
+>
+<hr>
+  <label for="newWorkoutNotes">New Workout Notes</label>
+  <input
+    class="form-control"
+    type="text"
+    name="newWorkoutNotes"
+    [(ngModel)]="newWorkout.notes"
+  />
+  <label for="newWorkoutMood">Mood:</label>
+  <input
+    class="form-control"
+    type="number"
+    min="0"
+    max="10"
+    name="newWorkoutMood"
+    [(ngModel)]="newWorkout.mood"
+  />
+  <br />
+  <input
+    class="btn btn-outline-success"
+    type="submit"
+    value="Add Workout"
+    (click)="addWorkout(newWorkout)"
+  />
+</form>
+<div name="details" *ngIf="selected && !editWorkout">
+  <button class="btn btn-outline-success" (click)="removeEditWorkout()">
+    Display Table
+  </button>
+  <br />
+  <table class="table table-striped table-hover">
+    <thead class="table-dark">
+      <tr>
+        <td>Id:</td>
+      <td>Date:</td>
+      <td>Notes:</td>
+      <td>Mood:</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ selected.id }}</td>
+
+        <td>{{ selected.date }}</td>
+
+        <td>{{ selected.notes }}</td>
+
+        <td>{{ selected.mood }}</td>
+        <td>
+          <button class="btn btn-success" (click)="setEditWorkout()">Edit</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<form
+  class="table table-striped table-hover"
+  name="editTodoForm"
+  *ngIf="editWorkout"
+>
+  <table class="table table-striped table-hover">
+    <thead class="table-dark">
+      <td>Task:</td>
+      <td>Description:</td>
+      <td>Completed:</td>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <input
+            class="form-control"
+            type="text"
+            name="task"
+            [(ngModel)]="editWorkout.notes"
+          />
+        </td>
+        <td>
+          <input
+            class="form-control"
+            type="number"
+            name="description"
+            min="0"
+            max="10"
+            [(ngModel)]="editWorkout.mood"
+          />
+        </td>
+        <td>
+          <input
+            class="btn btn-success"
+            type="submit"
+            value="Save"
+            (click)="updateWorkout(editWorkout)"
+          />
+        </td>
+        <td>
+          <input
+            class="btn btn-danger"
+            type="submit"
+            value="Cancel"
+            (click)="removeEditWorkout()"
+          />
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</form>

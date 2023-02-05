@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,11 +15,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.skilldistillery.workout.entities.Exercise;
-import com.skilldistillery.workout.entities.Workout;
 import com.skilldistillery.workout.services.ExerciseService;
 import com.skilldistillery.workout.services.WorkoutService;
 
 @RestController
+@CrossOrigin({ "*", "http://localhost/" })
 @RequestMapping("api")
 public class ExerciseController {
 	

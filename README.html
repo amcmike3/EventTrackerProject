@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>EventTrackerProject</title>
+        <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+        
+    </head>
+    <body class="vscode-body vscode-light">
+        <h1 id="eventtrackerproject">EventTrackerProject</h1>
+<h2 id="description">Description</h2>
+<ul>
+<li>This EventTrackerProject tracks workouts so weight, reps, and sets of exercises can be recorded to track growth. <strong><em> This project features a single HTML page that is dynamically changed via Javascript DOM manipulation. </em> </strong> XHR is used to send and receive JSON Objects from RESTful api's which is how the data is populated. The Api's are handle via a Java backend utilizing Spring Boot and JPA. The underlying Database is a MySQL database and communication with the database is handled using Hibernate in conjunction with JPA. Stylings are handled utilizing Bootstrap and CSS. With this app there are full CRUD operations on Workouts and partial CRUD on exercises.</li>
+</ul>
+<h2 id="active-deployed-server-link"><a href="http://54.201.168.70:8080/WorkoutTrackerBoot/">Active Deployed Server Link<a/></h2>
+<h2 id="technologies">Technologies</h2>
+<ul>
+<li>Java</li>
+<li>Javascript</li>
+<li>SQL</li>
+<li>AWS</li>
+<li>TypeScript</li>
+<li>Angular</li>
+<li>Spring Data JPA</li>
+<li>Spring Boot</li>
+<li>DOM</li>
+<li>REST</li>
+<li>JSON</li>
+<li>AJAX</li>
+<li>XHR</li>
+<li>Bootstrap</li>
+<li>HTML</li>
+<li>CSS</li>
+<li>Hibernate</li>
+<li>JPA</li>
+<li>JUnit</li>
+<li>TDD</li>
+</ul>
+<h2 id="-postman-collection-link"><a href="https://github.com/amcmike3/EventTrackerProject/blob/main/postman/postman_collection.json"> Postman Collection Link<a/></h2>
+<ul>
+<li>Importable postman collection at link above for a local instances only</li>
+</ul>
+<h2 id="restful-api-mappings">Restful API Mappings:</h2>
+<h4 id="workouts">workouts:</h4>
+<table>
+<thead>
+<tr>
+<th>HTTP Verb</th>
+<th>URI</th>
+<th>Request Body</th>
+<th>Response Body</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET</td>
+<td><code>http://54.201.168.70:8080/WorkoutTrackerBoot/api/workouts</code></td>
+<td></td>
+<td>Collection all workouts</td>
+<td><strong>List</strong> or <strong>collection</strong> endpoint</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>http://54.201.168.70:8080/WorkoutTrackerBoot/api/workouts/1</code></td>
+<td></td>
+<td>Representation of workout <code>1</code></td>
+<td><strong>Retrieve</strong> endpoint</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>http://54.201.168.70:8080/WorkoutTrackerBoot/api/workouts</code></td>
+<td>Representation of a workout</td>
+<td>Description of the result of the operation</td>
+<td><strong>Create</strong> endpoint</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td><code>http://54.201.168.70:8080/WorkoutTrackerBoot/api/workouts</code></td>
+<td>Representation of a new version of workout <code>1</code></td>
+<td></td>
+<td><strong>Replace</strong> endpoint</td>
+</tr>
+<tr>
+<td>PATCH</td>
+<td><code>Not Allowed</code></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td><code>http://54.201.168.70:8080/WorkoutTrackerBoot/api/workouts/1</code></td>
+<td></td>
+<td></td>
+<td><strong>Delete</strong> route changes enabled column to false in DB</td>
+</tr>
+</tbody>
+</table>
+<h4 id="exercises">exercises:</h4>
+<table>
+<thead>
+<tr>
+<th>HTTP Verb</th>
+<th>URI</th>
+<th>Request Body</th>
+<th>Response Body</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET</td>
+<td><code>http://54.201.168.70:8080/WorkoutTrackerBoot/api/exercises</code></td>
+<td></td>
+<td>Collection all exercises</td>
+<td><strong>List</strong> or <strong>collection</strong> endpoint</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>http://54.201.168.70:8080/WorkoutTrackerBoot/api/exercises/1</code></td>
+<td></td>
+<td>Representation of exercise <code>1</code></td>
+<td><strong>Retrieve</strong> endpoint</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>http://54.201.168.70:8080/WorkoutTrackerBoot/api/workouts/1/exercises</code></td>
+<td>Representation of a exercise</td>
+<td>Description of the result of the operation</td>
+<td><strong>Create</strong> endpoint</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td><code>http://54.201.168.70:8080/WorkoutTrackerBoot/api/exercises</code></td>
+<td>Representation of a new version of exercise <code>1</code></td>
+<td></td>
+<td><strong>Replace</strong> endpoint</td>
+</tr>
+<tr>
+<td>PATCH</td>
+<td><code>Not Allowed</code></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td><code>Not Allowed</code></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="database-schema">Database Schema</h2>
+<p><img src="https://github.com/amcmike3/EventTrackerProject/blob/main/images/Screen%20Shot%202023-01-28%20at%205.23.55%20PM.png" alt=""></p>
+<h2 id="future-implementations">Future implementations:</h2>
+<ul>
+<li>Add the ability to update and delete Exercises.</li>
+<li>create a nav bar with several options to create workouts, search for workouts, and show a limited view of workouts.</li>
+<li>add more stylings with pretty graphics.</li>
+</ul>
+<h2 id="limitations">Limitations:</h2>
+<ul>
+<li>Each exercise is its own entity in the DB. It would be better to be able to reference the same exercises in multiple workouts but due to limitations on Many To Many relationships from JPA there is not an elegant way to accomplish this.</li>
+<li>Every time page is loaded all the workouts stored in the db are loaded. This will not be optimal as the size of the DB grows.</li>
+</ul>
+
+        
+        
+    </body>
+    </html>

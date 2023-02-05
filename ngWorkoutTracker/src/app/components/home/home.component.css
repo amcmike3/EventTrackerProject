@@ -1,0 +1,13 @@
+.green {
+  background-color: green;
+}
+.yellow {
+  background-color: yellow;
+}
+.red {
+  background-color: red;
+}
+#strikeout {
+  text-decoration: line-through;
+  color: red !important;
+}

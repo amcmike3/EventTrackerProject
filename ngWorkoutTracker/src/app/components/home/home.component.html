@@ -7,24 +7,24 @@
     </span>
   </h3>
   <br />
-  <table class="table table-striped table-hover" *ngIf="!selected">
-    <thead class="table-dark">
-      <tr>
-        <td>Id</td>
-        <td>Date</td>
-        <td>Notes</td>
-        <td>Mood</td>
-        <td>Delete</td>
+  <table class="table table-striped table-hover table-dark"  *ngIf="!selected">
+    <thead class="">
+      <tr >
+        <td class="gold" >Id</td>
+        <td class="gold">Date</td>
+        <td class="gold">Notes</td>
+        <td class="gold">Mood</td>
+        <td class="gold">Delete</td>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of workouts">
-        <td>{{ item.id }}</td>
-        <td (click)="displayWorkout(item)">
+      <tr *ngFor="let item of workouts" >
+        <td id="gold">{{ item.id }}</td>
+        <td id="gold" (click)="displayWorkout(item)">
           {{ item.date | date : "shortDate" }}
         </td>
-        <td (click)="displayWorkout(item)">{{ item.notes }}</td>
-        <td (click)="displayWorkout(item)">{{ item.mood }}</td>
+        <td id="gold" (click)="displayWorkout(item)">{{ item.notes }}</td>
+        <td id="gold" (click)="displayWorkout(item)">{{ item.mood }}</td>
 
         <td>
           <button
@@ -72,26 +72,26 @@
       Display Workouts
     </button>
     <br />
-    <table class="table table-striped table-hover">
-      <thead class="table-dark">
+    <table class="table table-striped table-dark table-hover">
+      <thead class="">
         <tr>
-          <td>Id:</td>
-          <td>Date:</td>
-          <td>Notes:</td>
-          <td>Mood:</td>
-          <td>Edit:</td>
+          <td  id="gold">Id:</td>
+          <td id="gold">Date:</td>
+          <td id="gold">Notes:</td>
+          <td id="gold">Mood:</td>
+          <td id="gold">Edit:</td>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>{{ selected.id }}</td>
+          <td id="gold">{{ selected.id }}</td>
 
-          <td>{{ selected.date | date : "shortDate" }}</td>
+          <td id="gold">{{ selected.date | date : "shortDate" }}</td>
 
-          <td>{{ selected.notes }}</td>
+          <td id="gold">{{ selected.notes }}</td>
 
-          <td>{{ selected.mood }}</td>
-          <td>
+          <td id="gold">{{ selected.mood }}</td>
+          <td id="gold">
             <button class="btn btn-success" (click)="setEditWorkout()">
               Edit
             </button>
@@ -107,14 +107,14 @@
   >
     <table class="table table-striped table-hover">
       <thead class="table-dark">
-        <td>Task:</td>
-        <td>Description:</td>
-        <td>Save:</td>
-        <td>Cancel:</td>
+        <td id="gold">Notes:</td>
+        <td id="gold">Mood:</td>
+        <td id="gold">Save:</td>
+        <td id="gold">Cancel:</td>
       </thead>
       <tbody>
         <tr>
-          <td>
+          <td id="gold">
             <input
               class="form-control"
               type="text"
@@ -122,7 +122,7 @@
               [(ngModel)]="editWorkout.notes"
             />
           </td>
-          <td>
+          <td id="gold">
             <input
               class="form-control"
               type="number"
@@ -132,7 +132,7 @@
               [(ngModel)]="editWorkout.mood"
             />
           </td>
-          <td>
+          <td id="gold">
             <input
               class="btn btn-success"
               type="submit"
@@ -140,7 +140,7 @@
               (click)="updateWorkout(editWorkout)"
             />
           </td>
-          <td>
+          <td id="gold">
             <input
               class="btn btn-danger"
               type="submit"

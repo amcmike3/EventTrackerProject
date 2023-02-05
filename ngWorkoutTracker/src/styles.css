@@ -1,2 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.css";
+
+body {
+  background: url(https://i.pinimg.com/564x/b2/73/34/b273344a354c91b8e0d43320fdf862e6.jpg);
+  -webkit-background-size: cover;
+  background-size: cover;
+  -moz-background-size: cover;
+  -moz-background-size: cover;
+  color: rgb(201, 177, 39);
+}

@@ -11,3 +11,9 @@
   text-decoration: line-through;
   color: red !important;
 }
+#gold {
+  color: rgb(201, 177, 39);
+}
+label {
+  color: rgb(201, 177, 39);
+}

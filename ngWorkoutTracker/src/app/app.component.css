@@ -1,0 +1,43 @@
+body {
+	padding: 0;
+	margin: 0;
+}
+
+.link {
+	padding: 0 10px;
+}
+
+.infinity {
+	width: 100%;
+	height: 32.6vw;
+	background: url('https://raw.githubusercontent.com/Yousuke777/bg/main/sample-bg-03.png') repeat-x;
+	background-size: 50%;
+	animation: scroll-anim 15s linear infinite;
+}
+
+.infinity::before {
+	content: "";
+	width: 100%;
+	height: 32.6vw;
+	position: absolute;
+	background: url('https://raw.githubusercontent.com/Yousuke777/bg/main/sample-bg-02.png') repeat-x;
+	background-size: 50%;
+	animation: scroll-anim 10s linear infinite;
+}
+
+.infinity::after {
+	content: "";
+	width: 100%;
+	height: 32.6vw;
+	position: absolute;
+	background: url('https://raw.githubusercontent.com/Yousuke777/bg/main/sample-bg-01.png') repeat-x;
+	background-size: 50%;
+	animation: scroll-anim 5s linear infinite;
+}
+
+
+@keyframes scroll-anim {
+	100% {
+		background-position: -100% 0;
+	}
+}

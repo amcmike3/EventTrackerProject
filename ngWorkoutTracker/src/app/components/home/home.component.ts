@@ -18,6 +18,10 @@ export class HomeComponent implements OnInit {
   editExercise : Exercise | null = null;
   selected : null | Workout = null;
   daysSinceLastWorkout = 0;
+  newExerciseForm = false;
+  newExercise = new Exercise();
+
+
   constructor(private workoutService: WorkoutService, private removedPipe : RemovedPipe, private exerciseService : ExerciseService) {}
 
   ngOnInit() {
@@ -115,6 +119,8 @@ export class HomeComponent implements OnInit {
   }
   removeWorkout(){
     this.selected = null;
+    this.removeEditExercise();
+    this.newExerciseForm = false;
   }
   removeEditWorkout(){
     this.editWorkout = null;
@@ -125,7 +131,6 @@ export class HomeComponent implements OnInit {
 
   setEditExercise(exercise : Exercise){
     this.editExercise = exercise;
-    console.log(this.editExercise)
   }
 
   removeEditExercise(){
@@ -151,4 +156,39 @@ export class HomeComponent implements OnInit {
     }
     return ans;
   }
+
+  createExercise(exercise: Exercise, workoutId : number){
+    this.exerciseService.create(exercise, workoutId).subscribe({
+      next : (data) => {
+        this.newExerciseForm = false;
+        this.selected?.exercises.push(data);
+        this.newExercise = new Exercise();
+        this.reload();
+      },
+      error: (err) => {
+        console.log(
+          'HomeCompenent.createExercise(): Error creating Exercise'
+        );
+        console.log(err);
+      }
+    });
+
+  }
+
+  deleteExercise(id : number) {
+    this.exerciseService.destroy(id).subscribe({
+      next: (data) => {
+        this.reload();
+      },
+      error: (err) => {
+        console.log(
+          'HomeCompenent.deleteExercise(): Error deleting Exercise'
+        );
+        console.log(err);
+      }
+    });
+  }
+
+
+
 }

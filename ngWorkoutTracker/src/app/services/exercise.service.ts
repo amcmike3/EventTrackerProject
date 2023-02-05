@@ -14,7 +14,7 @@ export class ExerciseService {
 
 
   create(exercise: Exercise, workoutId : number): Observable<Exercise> {
-    return this.http.post<Exercise>(environment.baseUrl + `${workoutId}/exercises`, exercise ).pipe(
+    return this.http.post<Exercise>(environment.baseUrl + `api/workouts/${workoutId}/exercises`, exercise ).pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError(

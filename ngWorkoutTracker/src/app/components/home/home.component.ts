@@ -60,7 +60,18 @@ export class HomeComponent implements OnInit {
   }
 
   updateWorkout(editWorkout : Workout){
-
+    this.workoutService.update(editWorkout).subscribe({
+      next: (data) => {
+        this.reload();
+        this.selected = this.editWorkout;
+        this.editWorkout = null;
+      },
+      error: (err) =>{
+        console.log(
+          'TodoListCompenent.updateTodo(): Error updating todo'
+        );
+      }
+    });
   }
 
   daysSinceWorkout() : number{

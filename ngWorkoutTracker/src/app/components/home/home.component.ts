@@ -133,4 +133,11 @@ export class HomeComponent implements OnInit {
   updateExercise(exercise : Exercise){
 
   }
+  exerciseExists() : boolean{
+    let ans = false;
+    if (this.selected?.exercises != undefined){
+      ans = true;
+    }
+    return ans;
+  }
 }

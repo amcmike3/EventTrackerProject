@@ -26,6 +26,7 @@ public class Exercise {
 	private Integer weight;
 	private Integer reps;
 	private Integer sets;
+	private boolean enabled;
 	
 	@JsonIgnore
 	@ManyToOne
@@ -88,6 +89,14 @@ public class Exercise {
 
 	public void setSets(Integer sets) {
 		this.sets = sets;
+	}
+
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}
 
 	@Override

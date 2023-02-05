@@ -1,8 +1,8 @@
+import { Exercise } from './../models/exercise';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
-import { Workout } from '../models/workout';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +13,8 @@ export class ExerciseService {
   constructor(private http: HttpClient) { }
 
 
-  create(todo: Workout): Observable<Workout> {
-    return this.http.post<Workout>(this.url, todo ).pipe(
+  create(exercise: Exercise, workoutId : number): Observable<Exercise> {
+    return this.http.post<Exercise>(environment.baseUrl + `${workoutId}/exercises`, exercise ).pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError(
@@ -25,13 +25,13 @@ export class ExerciseService {
     );
   }
 
-  update(todo: Workout): Observable<Workout> {
-    return this.http.put<Workout>(`${this.url}/${todo.id}`, todo ).pipe(
+  update(exercise: Exercise): Observable<Exercise> {
+    return this.http.put<Exercise>(`${this.url}/${exercise.id}`, exercise ).pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError(
           () =>
-            new Error('TodoService.update(): error updating todo item: ' + err)
+            new Error('TodoService.update(): error updating exercise item: ' + err)
         );
       })
     );
@@ -46,7 +46,7 @@ export class ExerciseService {
           return throwError(
             () =>
               new Error(
-                'TodoService.update(): error updating todo item: ' + err
+                'TodoService.update(): error updating exercise item: ' + err
               )
           );
         })

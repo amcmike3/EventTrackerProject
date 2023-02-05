@@ -20,16 +20,17 @@
 |||
 |------|------|
 |Java|Javascript|
-|Typescript|SQL|
-|JPQL|AWS|
-|Angular|Spring Data JPA|
-|Spring Boot|DOM|
+|Angular|Typescript|
+|JPQL|SQL|
+|AWS|EC2|
+|Spring Boot|Spring Data JPA|
 |REST|JSON|
 |AJAX|XHR|
 |Bootstrap|CSS|
-|HTML||
+|HTML|DOM|
 |JUnit|TDD|
 |Hibernate|JPA|
+|Eclpise|Visual Studio Code|
 
 
 ## <a href="https://github.com/amcmike3/EventTrackerProject/blob/main/postman/postman_collection.json"> Postman Collection Link<a/>

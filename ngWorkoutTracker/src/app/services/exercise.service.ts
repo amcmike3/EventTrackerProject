@@ -1,51 +1,17 @@
-import { Workout } from './../models/workout';
-import { environment } from 'src/environments/environment.development';
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { catchError, Observable, throwError } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { Observable, catchError, throwError } from 'rxjs';
+import { environment } from 'src/environments/environment.development';
+import { Workout } from '../models/workout';
 
 @Injectable({
   providedIn: 'root'
 })
-export class WorkoutService {
+export class ExerciseService {
 
-
-  url = environment.baseUrl + "api/workouts";
+  url = environment.baseUrl + "api/exercises";
   constructor(private http: HttpClient) { }
 
-
-
-  index(): Observable<Workout[]> {
-    // return this.http.get<Todo[]>(this.url).pipe(
-    return this.http.get<Workout[]>(this.url).pipe(
-      catchError((err: any) => {
-        console.log(err);
-        return throwError(
-          () =>
-            new Error('TodoService.index(): error retrieving Todo list: ' + err)
-        );
-      })
-    );
-  }
-
-  show(todoId: number): Observable<Workout> {
-    return this.http
-      .get<Workout>(`${this.url}/${todoId}`)
-      .pipe(
-        catchError((err: any) => {
-          console.log(err);
-          return throwError(
-            () =>
-              new Error(
-                'TodoService.show(): error retrieving Todo id#: ' +
-                  todoId +
-                  ', ' +
-                  err
-              )
-          );
-        })
-      );
-  }
 
   create(todo: Workout): Observable<Workout> {
     return this.http.post<Workout>(this.url, todo ).pipe(
@@ -86,5 +52,4 @@ export class WorkoutService {
         })
       );
   }
-
 }

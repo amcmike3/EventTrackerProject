@@ -122,7 +122,15 @@ export class HomeComponent implements OnInit {
     this.editWorkout = Object.assign({}, this.selected);
   }
 
-  setEditExercise(){
+  setEditExercise(exercise : Exercise){
+    this.editExercise = exercise;
+    console.log(this.editExercise)
+  }
+
+  removeEditExercise(){
+    this.editExercise = null;
+  }
+  updateExercise(exercise : Exercise){
 
   }
 }

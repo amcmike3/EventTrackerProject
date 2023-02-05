@@ -15,7 +15,7 @@ import { ExerciseRemovedPipe } from './pipes/exercise-removed.pipe';
     AppComponent,
     HomeComponent,
     RemovedPipe,
-    ExerciseRemovedPipe
+    ExerciseRemovedPipe,
   ],
   imports: [
     BrowserModule,

@@ -14,9 +14,9 @@ import { getCurrencySymbol } from '@angular/common';
 export class HomeComponent implements OnInit {
   workouts: Workout[] = [];
   newWorkout : Workout = new Workout();
+  selected : null | Workout = null;
   editWorkout : Workout | null = null;
   editExercise : Exercise | null = null;
-  selected : null | Workout = null;
   daysSinceLastWorkout = 0;
   newExerciseForm = false;
   newExercise = new Exercise();

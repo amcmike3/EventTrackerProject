@@ -28,9 +28,9 @@ export class WorkoutService {
     );
   }
 
-  show(todoId: number): Observable<Workout> {
+  show(workoutId: number): Observable<Workout> {
     return this.http
-      .get<Workout>(`${this.url}/${todoId}`)
+      .get<Workout>(`${this.url}/${workoutId}`)
       .pipe(
         catchError((err: any) => {
           console.log(err);
@@ -38,7 +38,7 @@ export class WorkoutService {
             () =>
               new Error(
                 'TodoService.show(): error retrieving Todo id#: ' +
-                  todoId +
+                  workoutId +
                   ', ' +
                   err
               )
@@ -47,8 +47,8 @@ export class WorkoutService {
       );
   }
 
-  create(todo: Workout): Observable<Workout> {
-    return this.http.post<Workout>(this.url, todo ).pipe(
+  create(workout: Workout): Observable<Workout> {
+    return this.http.post<Workout>(this.url, workout ).pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError(
@@ -59,13 +59,13 @@ export class WorkoutService {
     );
   }
 
-  update(todo: Workout): Observable<Workout> {
-    return this.http.put<Workout>(`${this.url}/${todo.id}`, todo ).pipe(
+  update(workout: Workout): Observable<Workout> {
+    return this.http.put<Workout>(`${this.url}/${workout.id}`, workout ).pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError(
           () =>
-            new Error('TodoService.update(): error updating todo item: ' + err)
+            new Error('TodoService.update(): error updating workout item: ' + err)
         );
       })
     );
@@ -80,7 +80,7 @@ export class WorkoutService {
           return throwError(
             () =>
               new Error(
-                'TodoService.update(): error updating todo item: ' + err
+                'TodoService.update(): error updating workout item: ' + err
               )
           );
         })

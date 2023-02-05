@@ -17,9 +17,7 @@ export class HomeComponent implements OnInit {
   newWorkout : Workout = new Workout();
   selected : null | Workout = null;
   editWorkout : Workout | null = null;
-  editExercise : Exercise | null = null;
-  newExerciseForm = false;
-  newExercise = new Exercise();
+  newWorkoutForm = false;
   daysSinceLastWorkout = this.daysSinceWorkout();
   lastWorkout = "";
 
@@ -68,6 +66,7 @@ export class HomeComponent implements OnInit {
   addWorkout(newWorkout : Workout){
     this.workoutService.create(newWorkout).subscribe({
       next : (data) => {
+        this.selected = data;
         this.newWorkout = new Workout();
         this.reload();
       },
@@ -127,6 +126,10 @@ export class HomeComponent implements OnInit {
   }
   setEditWorkout(){
     this.editWorkout = Object.assign({}, this.selected);
+  }
+  clearNewWorkoutForm(){
+    this.newWorkoutForm = false;
+    this.newWorkout = new Workout();
   }
 
 }

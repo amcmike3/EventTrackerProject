@@ -7,6 +7,43 @@
       Since Last Workout
     </span>
   </h3>
+  <button *ngIf="!selected" (click)="newWorkoutForm = true"   class="btn btn-outline-success">Add New Workout</button>
+  <form
+    class="table table-striped table-hover"
+    name="newTodoForm"
+    *ngIf="!selected && newWorkoutForm"
+  >
+    <hr />
+    <label for="newWorkoutNotes">New Workout Notes</label>
+    <input
+      class="form-control"
+      type="text"
+      name="newWorkoutNotes"
+      [(ngModel)]="newWorkout.notes"
+    />
+    <label for="newWorkoutMood">Mood:</label>
+    <input
+      class="form-control"
+      type="number"
+      min="0"
+      max="10"
+      name="newWorkoutMood"
+      [(ngModel)]="newWorkout.mood"
+    />
+    <br />
+    <input
+      class="btn btn-outline-success"
+      type="submit"
+      value="Add Workout"
+      (click)="addWorkout(newWorkout)"
+    /> | |
+    <input
+      class="btn btn-outline-danger"
+      type="submit"
+      value="Cancel"
+      (click)="clearNewWorkoutForm()"
+    />
+  </form>
   <br />
   <table class="table table-striped table-hover table-dark" *ngIf="!selected">
     <thead class="">
@@ -38,36 +75,7 @@
       </tr>
     </tbody>
   </table>
-  <form
-    class="table table-striped table-hover"
-    name="newTodoForm"
-    *ngIf="!selected"
-  >
-    <hr />
-    <label for="newWorkoutNotes">New Workout Notes</label>
-    <input
-      class="form-control"
-      type="text"
-      name="newWorkoutNotes"
-      [(ngModel)]="newWorkout.notes"
-    />
-    <label for="newWorkoutMood">Mood:</label>
-    <input
-      class="form-control"
-      type="number"
-      min="0"
-      max="10"
-      name="newWorkoutMood"
-      [(ngModel)]="newWorkout.mood"
-    />
-    <br />
-    <input
-      class="btn btn-outline-success"
-      type="submit"
-      value="Add Workout"
-      (click)="addWorkout(newWorkout)"
-    />
-  </form>
+
   <div name="details" *ngIf="selected && !editWorkout">
     <button class="btn btn-outline-success" (click)="removeWorkout()">
       Display Workouts

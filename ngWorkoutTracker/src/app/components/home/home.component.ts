@@ -32,7 +32,6 @@ export class HomeComponent implements OnInit {
     this.workoutService.index().subscribe({
       next: (data) => {
         this.workouts = this.removedPipe.transform(data);
-        console.log(this.workouts);
         this.daysSinceLastWorkout = this.daysSinceWorkout();
       },
       error: (err) => {

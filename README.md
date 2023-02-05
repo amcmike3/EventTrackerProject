@@ -17,71 +17,20 @@
 ## <a href="http://54.201.168.70:8080/WorkoutTrackerBoot/">Active Deployed Server Link<a/>
 
 ## Technologies
-|||
+
 |------|------|
 |Java|Javascript|
-|||
-|||
-|||
-|||
-|||
-<table>
-    <tr>
-        <td> - Java </td>
-        <td> - Javascript</td>
-    </tr>
-    <tr>
-        <td> - TypeScript</td>
-        <td> - SQL</td>
-    </tr>
-    <tr>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td></td>
-        <td></td>
-    </tr>
-</table>
+|Typescript|SQL|
+|JPQL|AWS|
+|Angular|Spring Data JPA|
+|Spring Boot|DOM|
+|REST|JSON|
+|AJAX|XHR|
+|Bootstrap|CSS|
+|HTML||
+|JUnit|TDD|
+|Hibernate|JPA|
 
-
-- JPQL
-- AWS
-- Angular
-- Spring Data JPA
-- Spring Boot
-- DOM
-- REST
-- JSON
-- AJAX
-- XHR
-- Bootstrap
-- HTML
-- CSS
-- Hibernate
-- JPA
-- JUnit
-- TDD
 
 ## <a href="https://github.com/amcmike3/EventTrackerProject/blob/main/postman/postman_collection.json"> Postman Collection Link<a/>
 

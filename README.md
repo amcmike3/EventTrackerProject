@@ -17,7 +17,14 @@
 ## <a href="http://54.201.168.70:8080/WorkoutTrackerBoot/">Active Deployed Server Link<a/>
 
 ## Technologies
-
+|||
+|------|------|
+|Java|Javascript|
+|||
+|||
+|||
+|||
+|||
 <table>
     <tr>
         <td> - Java </td>

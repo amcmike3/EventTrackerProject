@@ -44,6 +44,18 @@ export class HomeComponent implements OnInit {
 
 
   addWorkout(newWorkout : Workout){
+    this.workoutService.create(newWorkout).subscribe({
+      next : (data) => {
+        this.newWorkout = new Workout();
+        this.reload();
+      },
+      error: (err) => {
+        console.log(
+          'TodoListCompenent.addTodo(): Error creating todo'
+        );
+        console.log(err);
+      }
+    })
 
   }
 
@@ -65,8 +77,8 @@ export class HomeComponent implements OnInit {
     }
     return "green";
   }
-  removeEditWorkout(){
-    this.editWorkout = null;
+  removeWorkout(){
+    this.selected = null;
   }
   setEditWorkout(){
     this.editWorkout = this.selected;

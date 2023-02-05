@@ -5,6 +5,7 @@ import { Workout } from './../../models/workout';
 import { WorkoutService } from './../../services/workout.service';
 import { Component, OnInit } from '@angular/core';
 import { getCurrencySymbol } from '@angular/common';
+import { interval, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -17,9 +18,11 @@ export class HomeComponent implements OnInit {
   selected : null | Workout = null;
   editWorkout : Workout | null = null;
   editExercise : Exercise | null = null;
-  daysSinceLastWorkout = 0;
   newExerciseForm = false;
   newExercise = new Exercise();
+  daysSinceLastWorkout = this.daysSinceWorkout();
+  lastWorkout = "";
+
 
 
   constructor(private workoutService: WorkoutService, private removedPipe : RemovedPipe, private exerciseService : ExerciseService) {}
@@ -32,7 +35,7 @@ export class HomeComponent implements OnInit {
     this.workoutService.index().subscribe({
       next: (data) => {
         this.workouts = this.removedPipe.transform(data);
-        this.daysSinceLastWorkout = this.daysSinceWorkout();
+        this.lastWorkout = this.workouts[this.workouts.length - 1].date
       },
       error: (err) => {
         console.log(

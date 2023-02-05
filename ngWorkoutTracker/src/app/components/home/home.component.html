@@ -2,8 +2,9 @@
   <h1>Workout Tracker</h1>
   <br />
   <h3>
-    <span [ngClass]="daysSinceWorkoutClass()"
-      >{{ daysSinceLastWorkout }} Days Since Last Workout
+    <span [ngClass]="daysSinceWorkoutClass()">
+      <app-counter [lastWorkoutInput]="lastWorkout"></app-counter>
+      Since Last Workout
     </span>
   </h3>
   <br />

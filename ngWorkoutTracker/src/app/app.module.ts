@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { RemovedPipe } from './pipes/removed.pipe';
 import { ExerciseRemovedPipe } from './pipes/exercise-removed.pipe';
 import { CounterComponent } from './components/counter/counter.component';
+import { ExerciseComponent } from './components/exercise/exercise.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { CounterComponent } from './components/counter/counter.component';
     RemovedPipe,
     ExerciseRemovedPipe,
     CounterComponent,
+    ExerciseComponent,
   ],
   imports: [
     BrowserModule,

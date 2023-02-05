@@ -1,0 +1,160 @@
+<div *ngIf="selected">
+  <button (click)="newExerciseForm = true" class="btn btn-outline-success">
+    Add New Exercise
+  </button>
+  <div *ngIf="newExerciseForm">
+    <form class="table table-striped table-hover" name="editTodoForm">
+      <label for="name">Name:</label>
+
+      <input
+        class="form-control"
+        type="text"
+        name="name"
+        [(ngModel)]="newExercise.name"
+      />
+      <label for="weight">Weight:</label>
+      <input
+        class="form-control"
+        type="number"
+        name="weight"
+        [(ngModel)]="newExercise.weight"
+      />
+      <label for="sets">Sets:</label>
+      <input
+        class="form-control"
+        type="number"
+        name="sets"
+        [(ngModel)]="newExercise.sets"
+      />
+      <label for="raps">Reps:</label>
+      <input
+        class="form-control"
+        type="number"
+        name="reps"
+        [(ngModel)]="newExercise.reps"
+      />
+      <label for="description">Description:</label>
+      <input
+        class="form-control"
+        type="text"
+        name="description"
+        [(ngModel)]="newExercise.description"
+      />
+      <input
+        class="btn btn-success"
+        type="submit"
+        value="Create"
+        (click)="createExercise(newExercise, selected.id)"
+      />
+      ||
+      <input
+        class="btn btn-danger"
+        type="submit"
+        value="Cancel"
+        (click)="newExerciseForm = false"
+      />
+    </form>
+  </div>
+  <h2 *ngIf="!exerciseExists()">
+    No Exercises Associated With This Workout
+  </h2>
+  <div *ngIf="exerciseExists()">
+    <h2>Exercises:</h2>
+    <table
+      class="table table-striped table-dark table-hover"
+      *ngIf="!editExercise"
+    >
+      <thead class="Exercises">
+        <tr>
+          <td>Name:</td>
+          <td>Weight:</td>
+          <td>Sets:</td>
+          <td>Reps:</td>
+          <td>Description:</td>
+          <td>Edit:</td>
+          <td>Delete:</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let exercise of selected.exercises | exerciseRemoved">
+          <td>{{ exercise.name }}</td>
+          <td>{{ exercise.weight }}</td>
+          <td>{{ exercise.sets }}</td>
+          <td>{{ exercise.reps }}</td>
+          <td>{{ exercise.description }}</td>
+          <td>
+            <button
+              class="btn btn-success"
+              (click)="setEditExercise(exercise)"
+            >
+              Edit
+            </button>
+          </td>
+          <td>
+            <button
+              class="btn btn-outline-danger"
+              (click)="deleteExercise(exercise.id, selected)"
+            >
+              X
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <form
+    class="table table-striped table-hover"
+    name="editTodoForm"
+    *ngIf="editExercise"
+  >
+    <label for="name">Name:</label>
+
+    <input
+      class="form-control"
+      type="text"
+      name="name"
+      [(ngModel)]="editExercise.name"
+    />
+    <label for="weight">Weight:</label>
+    <input
+      class="form-control"
+      type="number"
+      name="weight"
+      [(ngModel)]="editExercise.weight"
+    />
+    <label for="sets">Sets:</label>
+    <input
+      class="form-control"
+      type="number"
+      name="sets"
+      [(ngModel)]="editExercise.sets"
+    />
+    <label for="raps">Reps:</label>
+    <input
+      class="form-control"
+      type="number"
+      name="reps"
+      [(ngModel)]="editExercise.reps"
+    />
+    <label for="description">Description:</label>
+    <input
+      class="form-control"
+      type="text"
+      name="description"
+      [(ngModel)]="editExercise.description"
+    />
+    <input
+      class="btn btn-success"
+      type="submit"
+      value="Save"
+      (click)="updateExercise(editExercise)"
+    />
+    ||
+    <input
+      class="btn btn-danger"
+      type="submit"
+      value="Cancel"
+      (click)="removeEditExercise()"
+    />
+  </form>
+</div>

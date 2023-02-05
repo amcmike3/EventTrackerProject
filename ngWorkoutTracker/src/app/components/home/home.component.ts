@@ -81,6 +81,6 @@ export class HomeComponent implements OnInit {
     this.selected = null;
   }
   setEditWorkout(){
-    this.editWorkout = this.selected;
+    this.editWorkout = Object.assign({}, this.selected);
   }
 }

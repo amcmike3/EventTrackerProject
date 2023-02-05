@@ -1,6 +1,10 @@
 # EventTrackerProject
 ## Description
-- This EventTrackerProject tracks workouts so weight, reps, and sets of exercises can be recorded to track growth. <strong><em> This project started out as a single HTML page that was dynamically changed via Javascript DOM manipulation and XHR to send and receive JSON Objects from RESTful api's. </em> </strong> Over the course of this project the decision was made to change the front end to angular. This entire website is still a dynamic single page application but the data manipulation is accomplished through data-binding and DOM manipulation is offloaded to angualr. the logic that was offloaded by using Angular did not end there though. Dependency injection and modularization helps to keep code clean and maintainable. Stylings are handled utilizing Bootstrap and CSS.
+### Front-End
+- This EventTrackerProject tracks workouts so weight, reps, and sets of exercises can be recorded to track growth. <strong><em> This project started out as a single HTML page that was dynamically changed via Javascript DOM manipulation and XHR to send and receive JSON Objects from RESTful api's. </em> </strong> Over the course of this project the decision was made to change the front end to angular. This entire website is still a dynamic single page application but the data manipulation is accomplished through data-binding and DOM manipulation is offloaded to angualar. the logic that was offloaded by using Angular did not end there though. Dependency injection and modularization helped to keep code clean and maintainable. 
+- Utilizing pipes and services on the front end help keep the  entire stack utilizing the MVC framework, separating concerns. 
+- Stylings are handled utilizing Bootstrap and CSS.
+### Backend
 - The Api's are handled via a Java backend utilizing Spring Boot and JPA. The underlying Database is a MySQL database and communication with the database is handled using Hibernate in conjunction with JPA. With this app there are full CRUD operations on on two database tables representing Workouts and exercises.
 
 ## <a href="http://54.201.168.70:8080/WorkoutTrackerBoot/">Active Deployed Server Link<a/>
@@ -58,7 +62,7 @@
 
 ## Future implementations:
 - ~~Add the ability to update and delete Exercises.~~
-- create a nav bar with several options to create workouts, search for workouts, and show a limited view of workouts.
+- create a nav bar with several options to create workouts, search for workouts.
 - show a limited veiw of workouts and load more as scrolling occurs.
 - add more stylings with pretty graphics.
 

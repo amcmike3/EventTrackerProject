@@ -35,7 +35,7 @@ export class HomeComponent implements OnInit {
   }
 
   displayWorkout(workout : Workout){
-
+    this.selected = workout;
   }
 
   deleteWorkout(workoutId : number){

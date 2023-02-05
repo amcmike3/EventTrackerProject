@@ -14,6 +14,12 @@
 #gold {
   color: rgb(201, 177, 39);
 }
+.table-dark {
+  color: rgb(201, 177, 39);
+}
+.table-dark > tbody > tr > td{
+  color: rgb(201, 177, 39);
+}
 label {
   color: rgb(201, 177, 39);
 }

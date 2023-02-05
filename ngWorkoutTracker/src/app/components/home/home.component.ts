@@ -1,3 +1,4 @@
+import { Exercise } from './../../models/exercise';
 import { RemovedPipe } from './../../pipes/removed.pipe';
 import { Workout } from './../../models/workout';
 import { WorkoutService } from './../../services/workout.service';
@@ -13,6 +14,7 @@ export class HomeComponent implements OnInit {
   workouts: Workout[] = [];
   newWorkout : Workout = new Workout();
   editWorkout : Workout | null = null;
+  editExercise : Exercise | null = null;
   selected : null | Workout = null;
   daysSinceLastWorkout = 0;
   constructor(private workoutService: WorkoutService, private removedPipe : RemovedPipe) {}
@@ -115,5 +117,9 @@ export class HomeComponent implements OnInit {
   }
   setEditWorkout(){
     this.editWorkout = Object.assign({}, this.selected);
+  }
+
+  setEditExercise(){
+
   }
 }

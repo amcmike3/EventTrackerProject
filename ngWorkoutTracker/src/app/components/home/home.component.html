@@ -99,6 +99,32 @@
         </tr>
       </tbody>
     </table>
+    <h2>Exercises:</h2>
+    <table class="table table-striped table-dark table-hover">
+      <thead class="Exercises">
+        <tr>
+          <td>Name:</td>
+          <td>Weight:</td>
+          <td>Sets:</td>
+          <td>Reps:</td>
+          <td>Description:</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor=" let exercise of selected.exercises">
+          <td>{{ exercise.name}}</td>
+          <td>{{ exercise.weight }}</td>
+          <td>{{ exercise.sets }}</td>
+          <td>{{ exercise.reps }}</td>
+          <td>{{ exercise.description }}</td>
+          <td>
+            <button class="btn btn-success" (click)="setEditWorkout()">
+              Edit
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
   <form
     class="table table-striped table-hover"

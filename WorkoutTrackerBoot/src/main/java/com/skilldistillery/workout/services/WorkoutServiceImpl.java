@@ -1,5 +1,6 @@
 package com.skilldistillery.workout.services;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -39,6 +40,7 @@ public class WorkoutServiceImpl implements WorkoutService {
 
 	@Override
 	public Workout createWorkout(Workout workout) {
+		workout.setDate(LocalDateTime.now());
 		return workoutRepo.save(workout);
 	}
 

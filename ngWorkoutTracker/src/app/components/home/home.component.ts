@@ -1,3 +1,4 @@
+import { RemovedPipe } from './../../pipes/removed.pipe';
 import { Workout } from './../../models/workout';
 import { WorkoutService } from './../../services/workout.service';
 import { Component, OnInit } from '@angular/core';
@@ -13,7 +14,8 @@ export class HomeComponent implements OnInit {
   newWorkout : Workout = new Workout();
   editWorkout : Workout | null = null;
   selected : null | Workout = null;
-  constructor(private workoutService: WorkoutService) {}
+  daysSinceLastWorkout = 0;
+  constructor(private workoutService: WorkoutService, private removedPipe : RemovedPipe) {}
 
   ngOnInit() {
     this.reload();
@@ -22,8 +24,9 @@ export class HomeComponent implements OnInit {
   reload() {
     this.workoutService.index().subscribe({
       next: (data) => {
-        this.workouts = data;
-        console.log(data);
+        this.workouts = this.removedPipe.transform(data);
+        console.log(this.workouts);
+        this.daysSinceLastWorkout = this.daysSinceWorkout();
       },
       error: (err) => {
         console.log(
@@ -84,13 +87,22 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  daysSinceWorkout() : number{
+  daysSinceWorkout(){
  // fix me return number of days since last workout
-    return 0;
+ let ans = 0
+    if (this.workouts[this.workouts.length - 1] != undefined){
+      let lastWorkout = Date.parse(this.workouts[this.workouts.length - 1].date).valueOf();
+      let currDate = new Date().valueOf();
+      ans = Math.floor((currDate - lastWorkout) / (1000 * 3600 * 24));
+      if (ans < 0){
+        ans = 0;
+      }
+    }
+    return ans;
   }
 
   daysSinceWorkoutClass() : string {
-    let numDays = this.daysSinceWorkout();
+    let numDays = this.daysSinceLastWorkout;
     if (numDays > 5){
       return "red";
     } else if (numDays > 2){

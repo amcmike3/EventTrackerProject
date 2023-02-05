@@ -22,7 +22,8 @@ import { RemovedPipe } from './pipes/removed.pipe';
     HttpClientModule
   ],
   providers: [
-    WorkoutService
+    WorkoutService,
+    RemovedPipe
   ],
   bootstrap: [AppComponent]
 })

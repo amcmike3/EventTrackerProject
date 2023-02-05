@@ -39,7 +39,17 @@ export class HomeComponent implements OnInit {
   }
 
   deleteWorkout(workoutId : number){
-
+    this.workoutService.destroy(workoutId).subscribe({
+      next: (data) => {
+        this.reload();
+      },
+      error: (err) => {
+        console.log(
+          'HomeCompenent.deleteWorkout(): Error deleting Workout'
+        );
+        console.log(err);
+      }
+    })
   }
 
 
@@ -51,7 +61,7 @@ export class HomeComponent implements OnInit {
       },
       error: (err) => {
         console.log(
-          'TodoListCompenent.addTodo(): Error creating todo'
+          'HomeCompenent.addWorkout(): Error creating Workout'
         );
         console.log(err);
       }

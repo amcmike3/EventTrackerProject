@@ -118,7 +118,7 @@
           <td>{{ exercise.reps }}</td>
           <td>{{ exercise.description }}</td>
           <td>
-            <button class="btn btn-success" (click)="setEditWorkout()">
+            <button class="btn btn-success" (click)="setEditExercise()">
               Edit
             </button>
           </td>
@@ -171,7 +171,7 @@
               class="btn btn-danger"
               type="submit"
               value="Cancel"
-              (click)="removeWorkout()"
+              (click)="removeEditWorkout()"
             />
           </td>
         </tr>

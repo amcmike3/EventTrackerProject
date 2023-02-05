@@ -115,6 +115,9 @@ export class HomeComponent implements OnInit {
   removeWorkout(){
     this.selected = null;
   }
+  removeEditWorkout(){
+    this.editWorkout = null;
+  }
   setEditWorkout(){
     this.editWorkout = Object.assign({}, this.selected);
   }

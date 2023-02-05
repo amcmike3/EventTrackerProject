@@ -8,12 +8,14 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { FormsModule } from '@angular/forms';
 import { RemovedPipe } from './pipes/removed.pipe';
+import { ExerciseRemovedPipe } from './pipes/exercise-removed.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    RemovedPipe
+    RemovedPipe,
+    ExerciseRemovedPipe
   ],
   imports: [
     BrowserModule,
@@ -23,7 +25,8 @@ import { RemovedPipe } from './pipes/removed.pipe';
   ],
   providers: [
     WorkoutService,
-    RemovedPipe
+    RemovedPipe,
+    ExerciseRemovedPipe
   ],
   bootstrap: [AppComponent]
 })

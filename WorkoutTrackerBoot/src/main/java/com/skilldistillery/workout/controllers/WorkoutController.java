@@ -50,12 +50,8 @@ public class WorkoutController {
 		Workout ans = null;
 		// hibernate gets cannot update child error if Exercise objects are also sent in.
 		try {
-			if (workout.getExercises() != null) {
-				resp.setStatus(400);
-			} else {
 				ans = workServ.createWorkout(workout);
 				resp.setStatus(201);
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			resp.setStatus(400);

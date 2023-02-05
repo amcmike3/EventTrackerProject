@@ -5,8 +5,8 @@ export class Workout {
   mood : string;
   notes :string;
   enabled : boolean;
-  exercises : Exercise[] | null;
-  constructor(id : number = 0, date : string = "", mood : string= "", notes :string= "",enabled : boolean = true ,exercises : Exercise[] | null = null){
+  exercises : Exercise[];
+  constructor(id : number = 0, date : string = "", mood : string= "", notes :string= "",enabled : boolean = true ,exercises : Exercise[] = []){
     this.id = id;
     this.date = date;
     this.mood = mood;

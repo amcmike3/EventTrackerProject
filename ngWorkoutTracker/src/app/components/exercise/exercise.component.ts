@@ -13,9 +13,9 @@ export class ExerciseComponent {
 
   @Input() selected : Workout | null = null;
   @Output() selectedChange = new EventEmitter<Workout | null>();
-  @Input() editExercise : Exercise | null = null;
-  @Input() newExerciseForm = false;
-  @Input() newExercise = new Exercise();
+  editExercise : Exercise | null = null;
+  newExerciseForm = false;
+  newExercise = new Exercise();
 
 
   constructor(private exerciseService : ExerciseService, private workoutService : WorkoutService){

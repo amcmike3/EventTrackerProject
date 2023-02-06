@@ -42,10 +42,10 @@ export class CounterComponent {
   }
 
 private allocateTimeUnits (timeDifference : number) {
-      this.secondsToDday = -Math.floor((timeDifference) / (this.milliSecondsInASecond) % this.SecondsInAMinute) - 1;
-      this.minutesToDday = -Math.floor((timeDifference) / (this.milliSecondsInASecond * this.minutesInAnHour) % this.SecondsInAMinute) - 1;
-      this.hoursToDday = -Math.floor((timeDifference) / (this.milliSecondsInASecond * this.minutesInAnHour * this.SecondsInAMinute) % this.hoursInADay) - 1;
-      this.daysToDday = -Math.floor((timeDifference) / (this.milliSecondsInASecond * this.minutesInAnHour * this.SecondsInAMinute * this.hoursInADay)) - 1;
+      this.secondsToDday = -Math.floor((timeDifference) / (this.milliSecondsInASecond) % this.SecondsInAMinute) + 60; // -1 on local
+      this.minutesToDday = -Math.floor((timeDifference) / (this.milliSecondsInASecond * this.minutesInAnHour) % this.SecondsInAMinute) + 59; // -1 on local
+      this.hoursToDday = -Math.floor((timeDifference) / (this.milliSecondsInASecond * this.minutesInAnHour * this.SecondsInAMinute) % this.hoursInADay) + 6; // -1 on local
+      this.daysToDday = -Math.floor((timeDifference) / (this.milliSecondsInASecond * this.minutesInAnHour * this.SecondsInAMinute * this.hoursInADay)) ; // -1 on local
 }
 
   ngOnInit() {
